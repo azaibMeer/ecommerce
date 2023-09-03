@@ -46,10 +46,10 @@
 									<div class="menu-sub menu-sub-accordion menu-active-bg">
 											<div class="menu-item">
 												<a class="menu-link 
-												{{ request()->is('category/list') ? 'active' : '' }}
+												{{ request()->is('/category_list') ? 'active' : '' }}
 												 {{ request()->is('category/add') ? 'active' : '' }}
 												  {{ request()->is('category/edit*') ? 'active' : '' }}"
-												  href="{{url('/category/list')}}">
+												  href="{{url('/category_list')}}">
 													<span class="menu-title">Categories </span>
 												</a>
 											</div>

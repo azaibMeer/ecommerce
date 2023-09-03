@@ -39,7 +39,7 @@ Route::get('/', [IndexController::class, 'index']);
 Route::post('/subscribe', [IndexController::class, 'subscribe']); 
 Route::get('/contact', [ContactUsController::class, 'index']); 
 Route::post('/store/contact', [ContactUsController::class, 'store']);
-Route::get('/category/{id}', [CategoryController::class, 'category_product']);
+Route::get('/p_category/{id}', [CategoryController::class, 'category_product']);
 Route::get('/product/detail/{slug}', [ProductController::class, 'detail']);
 
 
@@ -54,7 +54,7 @@ Route::post('/authenticate', [AdminAuthController::class, 'authenticate']);
 Route::group(['middleware'=> 'admin'],function(){
 
     Route::get('/admin/dashboard', [DashbordController::class, 'index']);
-    Route::get('/category/list', [CategoryController::class, 'show']);
+    Route::get('/category_list', [CategoryController::class, 'show']);
     Route::get('/category/add', [CategoryController::class, 'index']);
     Route::get('/category/edit/{id}', [CategoryController::class, 'edit']);
     Route::post('/category/update/{id}', [CategoryController::class, 'update']);
