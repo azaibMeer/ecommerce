@@ -39,7 +39,7 @@ Route::get('/', [IndexController::class, 'index']);
 Route::post('/subscribe', [IndexController::class, 'subscribe']); 
 Route::get('/contact', [ContactUsController::class, 'index']); 
 Route::post('/store/contact', [ContactUsController::class, 'store']);
-Route::get('/category/products/{slug}', [CategoryController::class, 'category_product']);
+Route::get('/category/{id}', [CategoryController::class, 'category_product']);
 Route::get('/product/detail/{slug}', [ProductController::class, 'detail']);
 
 

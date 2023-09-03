@@ -498,9 +498,9 @@
                                                 </ul>
 												
                                                 <div class="tab-content">
-                                                    <div id="description" class="tab-pane fade in active show">
+                                                <div id="description" class="tab-pane fade in active show">
                                                         <p>
-                                                            {{$product->long_description}}
+                                                            {!!$product->long_description!!}
                                                         </p>
                                                         
                                                     </div>
@@ -607,16 +607,10 @@
                                                         </form>
                                                     </div>
                                                     <div id="tag" class="tab-pane fade in">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                            eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                            ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                            tempor incididunt ut labore et dolore magna aliqua.
+                                                        <p>
+                                                            {{$product->product_tag}}
                                                         </p>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                            eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                            ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                            tempor incididunt ut labore et dolore magna aliqua.
-                                                        </p>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

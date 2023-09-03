@@ -149,11 +149,11 @@ class CategoryController extends Controller
         return redirect('/category/list')->with('error' , 'Delete Succcess');
     }
 
-    public function category_product($slug){
+    public function category_product($id){
 
 
             $data['setting'] = Setting::first();
-            $category = Category::where('slug',$slug)->first();
+            $category = Category::where('id',$id)->first();
             $category_id = $category->id;
             $data['products'] = Product::where('category_id',$category_id)->get();
             return view('front.category_products',$data);

@@ -63,7 +63,9 @@ class CartController extends Controller
         {
             $product = Product::find($id);
 
-        $chek_product_in_cart = Checkout::where('product_id',$id)->where('user_id',Auth::User()->id)->first();
+        $chek_product_in_cart = Checkout::where('product_id',$id)
+        ->where('user_id',Auth::User()->id)->first();
+        
         if(empty($chek_product_in_cart)){
 
             $cart = new Checkout;
