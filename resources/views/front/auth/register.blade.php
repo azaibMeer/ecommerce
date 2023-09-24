@@ -2,27 +2,6 @@
 @section('class', 'user-register blog')
 @section('content')
 <div class="main-content">
-        <!-- <div class="wrap-banner">
-            <nav class="breadcrumb-bg">
-                <div class="container no-index">
-                    <div class="breadcrumb">
-                        <ol>
-                            <li>
-                                <a href="#">
-                                    <span>Home</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span>About us</span>
-                                </a>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </nav>
-        </div> -->
-
         <!-- main -->
         <div id="wrapper-site">
             <div class="container">
@@ -40,7 +19,9 @@
                                         {{ session()->get('error') }}
                                     </div>
                                 @endif
-                                    <h1 class="text-center title-page">Create your Furnitica Account</h1>
+                                    <h1 class="text-center title-page">
+                                        Create your {{$setting->website_name}} Account
+                                    </h1>
                                     <form action="{{url('/create/user')}}" id="customer-form" 
                                     class="js-customer-form" method="post">
                                     @csrf
@@ -49,7 +30,7 @@
                                                 <div>
                                                     <input class="form-control" name="name" type="text" placeholder="First name">
                                                     @error('name')
-                                                    <p class="text-danger">{{ $message }}</p>
+                                                    <p class="error-alignment">{{ $message }}</p>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -57,7 +38,7 @@
                                                 <div>
                                                     <input class="form-control" name="email" type="email" placeholder="Email">
                                                      @error('email')
-                                                    <p class="text-danger">{{ $message }}</p>
+                                                    <p class="error-alignment">{{ $message }}</p>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -65,7 +46,7 @@
                                                 <div>
                                                     <input class="form-control" name="password" type="password" placeholder="Password">
                                                      @error('password')
-                                                    <p class="text-danger">{{ $message }}</p>
+                                                    <p class="error-alignment">{{ $message }}</p>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -73,7 +54,7 @@
                                                 <div class="col">
                                                   <input type="text" class="form-control" name="phone" type="number" placeholder="Phone">
                                                    @error('phone')
-                                                    <p class="text-danger">{{ $message }}</p>
+                                                    <p class="error-alignment">{{ $message }}</p>
                                                     @enderror
                                                 </div>
                                                 <div class="col">
@@ -88,7 +69,7 @@
                                                 <div>
                                                     <input class="form-control" name="address" type="address" placeholder="Address">
                                                      @error('address')
-                                                    <p class="text-danger">{{ $message }}</p>
+                                                    <p class="error-alignment">{{ $message }}</p>
                                                     @enderror
                                                 </div>
                                             </div>

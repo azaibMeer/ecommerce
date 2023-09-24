@@ -45,10 +45,14 @@
                                                             <i class="fa fa-trash" aria-hidden="true"></i>
                                                         
                                                             </a>
+                                                    @php
+                                                        $product = App\Models\Product::where('id',$list->product_id)->first();
+                                                    @endphp
+                                                            @if(($product->quantity) > 0)
                                                             <a href="{{url('/user/addtocart/'.$list->id)}}" class="icon-size" title="add to cart ">
                                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                           
                                                             </a>
+                                                            @endif
                                                         </td>
                                                        
                                                     </tr>

@@ -17,7 +17,7 @@
                            <ul>
                             @foreach($main_category->children as $child)
                               <li class="item parent-submenu parent">
-                                 <a href="{{url('/p_category/'.$child->id)}}" 
+                                 <a href="{{url('/category/'.$child->slug)}}" 
                                     title="{{$child->name}}">{{$child->name}}</a>
                                  <span class="show-sub fa-active-sub"></span>
                                  <div class="dropdown-submenu">
@@ -26,7 +26,7 @@
                                        <ul>
                                             @foreach($child->children as $sub_child)
                                           <li class="item ">
-                                             <a href="{{url('/p_category/'.$sub_child->id)}}" 
+                                             <a href="{{url('/category/'.$sub_child->slug)}}" 
                                                 title="{{$sub_child->name}}">
                                                 {{$sub_child->name}}</a>
                                           </li>

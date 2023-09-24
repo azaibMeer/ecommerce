@@ -25125,3 +25125,7 @@ footer [class~=title-block],
 	font-size: 20px;
 }
 
+.error-alignment{
+	text-align: left;
+	color: #dc3545;
+}

@@ -17,7 +17,7 @@ class WishlistController extends Controller
             $user_id = Auth::User()->id;
             $data['setting'] = Setting::first();
             $data['wishlist'] = Product::join('wishlist','wishlist.product_id','products.id')
-            ->select('products.*','wishlist.created_at','wishlist.id')
+            ->select('products.*','wishlist.created_at','wishlist.id','wishlist.product_id')
             ->where('wishlist.user_id',$user_id)->get();
 
             return view('front.wishlist',$data);

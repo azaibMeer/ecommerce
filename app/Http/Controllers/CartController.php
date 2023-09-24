@@ -24,64 +24,48 @@ class CartController extends Controller
         $data['total'] =  Checkout::where('user_id',Auth::User()->id)->sum('price');
         return view('front.cart',$data);
     }
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 
     public function addToCart(Request $request , $id)
     {   
-
+        dd($request->all());
         if(Auth::User()) 
         {
             $product = Product::find($id);
-
-        $chek_product_in_cart = Checkout::where('product_id',$id)
-        ->where('user_id',Auth::User()->id)->first();
+            $product_qty =  $product->quantity;
+            $chek_product_in_cart = Checkout::where('product_id',$id)
+            ->where('user_id',Auth::User()->id)->first();
         
         if(empty($chek_product_in_cart)){
 
-            $cart = new Checkout;
-            $cart->user_id = Auth::user()->id;
-            $cart->product_id = $id;
-            $cart->price = ($product->price - $product->discount) * $request->quantity;
-            $cart->quantity = $request->quantity;
-            $cart->save();
-            return redirect()->back()->with('message','Added to cart success');
+            if($request->quantity <= $product_qty && $request->quantity !== 0){
+                $cart = new Checkout;
+                $cart->user_id = Auth::user()->id;
+                $cart->product_id = $id;
+                $cart->price = ($product->price - $product->discount) * $request->quantity;
+                $cart->quantity = $request->quantity;
+                $cart->save();
+                return redirect()->back()->with('message','Added to cart success');
+            }else{
+                return redirect()->back()->with('error','Quantity not available');
+            }
+            
         }    
 
         else{
-            $chek_product_in_cart->quantity += $request->quantity;
-            $chek_product_in_cart->price = ($product->price - $product->discount) * $chek_product_in_cart->quantity;
-            $chek_product_in_cart->save();
-            return redirect()->back()->with('message','quantity increase success');
+
+            $cart_quantity = $chek_product_in_cart->quantity;
+            $user_quantity = $request->quantity;
+            $total_qty = $cart_quantity + $user_quantity; 
+            if($product_qty >= $total_qty)
+            {
+                 $chek_product_in_cart->quantity += $request->quantity;
+                 $chek_product_in_cart->price = ($product->price - $product->discount) * $chek_product_in_cart->quantity;
+                 $chek_product_in_cart->save();
+                return redirect()->back()->with('message','quantity increase success');
+            }else{
+                 return redirect()->back()->with('error','quantity not available');
+            }
+           
         }
             
         }
@@ -155,10 +139,16 @@ class CartController extends Controller
                 $order_detail->total_price = $order_detail->subtotal + $setting->shipping_charges;
                 $order_detail->status = 1;
                 $order_detail->save();
+
+                $product_id = $single_product->product_id;
+                $update_product = Product::find($product_id);
+                $update_product->quantity = $update_product->quantity - $single_product->quantity;
+                $update_product->save();
+
         }
 
 
-         $remove_from_checkout = Checkout::where('user_id',$user_id)->get();
+            $remove_from_checkout = Checkout::where('user_id',$user_id)->get();
             foreach($remove_from_checkout as $remove){
             $remove->delete();
             }
@@ -167,7 +157,6 @@ class CartController extends Controller
 
 
     }
-
 
     public function order_complete($order_no){
 

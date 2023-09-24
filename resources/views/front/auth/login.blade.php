@@ -2,29 +2,6 @@
 @section('class', 'user-login blog')
 @section('content')
 <div class="main-content">
-        <!-- <div class="wrap-banner">
-            <nav class="breadcrumb-bg">
-                <div class="container no-index">
-                    <div class="breadcrumb">
-                        <ol>
-                            <li>
-                                <a href="#">
-                                    <span>Home</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span>Login</span>
-                                </a>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </nav>
-
-        </div> -->
-
-        <!-- main -->
         <div id="wrapper-site">
             <div id="content-wrapper" class="full-width">
                 <div id="main">
@@ -45,7 +22,7 @@
                                 <div>
                                     
                                     <div class="form-group no-gutters">
-                                        <input class="form-control" name="email" type="email" placeholder=" Email" value="user@gmail.com">
+                                        <input class="form-control" name="email" type="email" placeholder=" Email">
                                     </div>
                                     <div class="form-group no-gutters">
                                         <div class="input-group js-parent-focus">
@@ -54,7 +31,7 @@
                                     </div>
                                     <div class="no-gutters text-center">
                                         <div class="forgot-password">
-                                            <a href="user-reset-password.html" rel="nofollow">
+                                            <a href="#" rel="nofollow">
                                                 Forgot your password?
                                             </a>
                                         </div>

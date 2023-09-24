@@ -142,20 +142,24 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $category = Category::find($id);
         $category->delete();
         return redirect('/category/list')->with('error' , 'Delete Succcess');
     }
 
-    public function category_product($id){
+    public function category_product($slug){
 
-
+            //dd($slug);
             $data['setting'] = Setting::first();
-            $category = Category::where('id',$id)->first();
-            $category_id = $category->id;
-            $data['products'] = Product::where('category_id',$category_id)->get();
+            
+            $category = Category::where('slug',$slug)->first();
+            //dd($category);
+            if(empty($category))
+                return redirect(url('/error'));
+            else
+            $data['products']  = Product::where('category_id',$category->id)->get();
             return view('front.category_products',$data);
     }
 }

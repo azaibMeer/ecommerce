@@ -433,6 +433,7 @@
                               </div>
                            </div>
                         </div>
+                        @if(count($products) > 0)
                         <div class="col-sm-8 col-lg-9 col-md-8 product-container">
                            <h1>Lingving Room</h1>
                            <div class="js-product-list-top firt nav-top">
@@ -447,7 +448,7 @@
                                        </li>
                                     </ul>
                                     <div class="hidden-sm-down total-products">
-                                       <p>There are 12 products.</p>
+                                       <p>There are {{count($products)}} products.</p>
                                     </div>
                                  </div>
                                  <div class="col col-xs-12">
@@ -468,38 +469,30 @@
                            <div class="tab-content product-items">
                               <div id="grid" class="related tab-pane fade in active show">
                                  <div class="row">
-                                    @if(count($products) > 0)
+                                   
                                     @foreach($products as $product)
                                     <div class="item text-center col-md-3">
                                        <div class="product-miniature js-product-miniature item-one first-item">
                                           <div class="thumbnail-container border">
-                                             <a href="product-detail.html">
+                                             <a href="{{url('/product/detail/'.$product->slug)}}">
                                              <img class="img-fluid" src="{{$product->main_image}}" alt="img">
-                                            
                                              </a>
-                                             
                                           </div>
                                           <div class="product-description">
                                              <div class="product-groups">
                                                 <div class="product-title">
-                                                   <a href="product-detail.html">{{Str::limit($product->name,30)}}</a>
+                                                   <a href="{{url('/product/detail/'.$product->slug)}}">{{ucwords(Str::limit($product->name,30))}}</a>
                                                 </div>
-                                                
                                                 <div class="product-group-price">
                                                    <div class="product-price-and-shipping">
-                                                      <span class="price">{{$setting->currency}} {{$product->price}}</span>
+                                                      <span class="price">{{$setting->currency}} {{$product->price - $product->discount}}</span>
                                                    </div>
                                                 </div>
                                              </div>
-                                             
                                           </div>
                                        </div>
                                     </div>
                                     @endforeach
-                                    @else
-                                    <span>No product found</span>
-                                    @endif
-                                   
                                  </div>
                               </div>
                               <div id="list" class="related tab-pane fade">
@@ -521,10 +514,17 @@
                                                    <div class="product-groups">
                                                       <div class="product-title">
                                                          <a href="product-detail.html">{{$product->name}}</a>
+                                                         @if($product->quantity > 0)
                                                          <span class="info-stock">
                                                          <i class="fa fa-check-square-o" aria-hidden="true"></i>
                                                          In Stock
                                                          </span>
+                                                         @else
+                                                         <span class="info-stock text-danger">
+                                                         <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                                         Out of stock
+                                                         </span>
+                                                         @endif
                                                       </div>
                                                       <div class="rating">
                                                          <div class="star-content">
@@ -537,7 +537,7 @@
                                                       </div>
                                                       <div class="product-group-price">
                                                          <div class="product-price-and-shipping">
-                                                            <span class="price">£28.08</span>
+                                                            <span class="price">{{$product->price - $product->discount}}</span>
                                                          </div>
                                                       </div>
                                                       <div class="discription">
@@ -547,7 +547,7 @@
                                                    </div>
                                                    <div class="product-buttons d-flex">
                                                       <form action="#" method="post" class="formAddToCart">
-                                                         <a class="add-to-cart" href="#" data-button-action="add-to-cart">
+                                                         <a class="add-to-cart" href="" data-button-action="add-to-cart">
                                                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>Add to cart
                                                          </a>
                                                       </form>
@@ -564,7 +564,7 @@
                                        </div>
                                     </div>
                                    @endforeach
-                                    
+                                  
                                  </div>
                               </div>
                            </div>
@@ -608,6 +608,9 @@
                               </div>
                            </div>
                         </div>
+                        @else
+                        <p>Product Not found</p>
+                        @endif
                         <!-- end col-md-9-1 -->
                      </div>
                   </div>

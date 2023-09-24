@@ -17,9 +17,11 @@ class DashbordController extends Controller
      */
     public function index()
     {   
+
        $data['setting'] = Setting::first();
        $data['users'] = DB::select('SELECT  COUNT(id) as total_users FROM users WHERE user_type = 2');
        $data['orders'] = DB::select('SELECT  COUNT(id) as total_orders FROM orders');
+         $data['new_orders'] = DB::select('SELECT  COUNT(id) as new_orders FROM orders where status = 1');
        
        $data['total_month_sales'] = DB::select('SELECT SUM(total_price) as total_order_price 
         FROM orders
@@ -42,8 +44,24 @@ class DashbordController extends Controller
                             GROUP BY users.id, users.name,users.profile
                             ORDER BY top_purchasing_user DESC
                             LIMIT 3');   
+        //return response()->json(['message' => 'Thanks For Contact']);
+        
+        
+        $graphs = DB::select('SELECT DATE(created_at) AS order_date,SUM(total_price)
+         AS total_orders_sale_perday FROM orders GROUP BY DATE(created_at)
+         ORDER BY order_date');
+
+
+        $data['chartData'] = [];
+        foreach ($graphs as  $value) {
+        $data['chartData'][] = [strtotime($value->order_date) , $value->total_orders_sale_perday];
+        }
+
+        
+
 
         return view('admin.layouts.dashboard',$data);   
+
     }
     /**
      * Show the form for creating a new resource.
@@ -89,4 +107,19 @@ class DashbordController extends Controller
     {
         //
     }
+
+    /*public function get_data(){
+
+        $orders = DB::select('SELECT 
+            DATE(created_at) AS order_date,
+            SUM(total_price) AS total_orders_sale_perday
+        FROM 
+            orders
+        GROUP BY 
+            DATE(created_at)
+        ORDER BY 
+            order_date;');
+    }
+
+   return response()->json(['message'=> 'Thanks for message']);*/
 }

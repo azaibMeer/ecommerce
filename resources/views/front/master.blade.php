@@ -40,89 +40,7 @@
 <body id="@yield('id', 'home')" class="@yield('class', '')">
     <header>
         <!-- header left mobie -->
-        <div class="header-mobile d-md-none">
-            <div class="mobile hidden-md-up text-xs-center d-flex align-items-center justify-content-around">
-
-                <!-- menu left -->
-                <div id="mobile_mainmenu" class="item-mobile-top">
-                    <i class="fa fa-bars" aria-hidden="true"></i>
-                </div>
-
-                <!-- logo -->
-                <div class="mobile-logo">
-                    <a href="index-2.html">
-                        <img class="logo-mobile img-fluid" src="/front_assets/img/home/logo-mobie.png" alt="Prestashop_Furnitica">
-                    </a>
-                </div>
-
-                <!-- menu right -->
-                <div class="mobile-menutop" data-target="#mobile-pagemenu">
-                    <i class="zmdi zmdi-more"></i>
-                </div>
-            </div>
-
-            <!-- search -->
-            <div id="mobile_search" class="d-flex">
-                <div id="mobile_search_content">
-                    <form method="get" action="#">
-                        <input type="text" name="s" value="" placeholder="Search">
-                        <button type="submit">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-                <div class="desktop_cart">
-                    <div class="blockcart block-cart cart-preview tiva-toggle">
-                        <div class="header-cart tiva-toggle-btn">
-                            <span class="cart-products-count">1</span>
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        </div>
-                        <div class="dropdown-content">
-                            <div class="cart-content">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <td class="product-image">
-                                                <a href="product-detail.html">
-                                                    <img src="/front_assets/img/product/5.jpg" alt="Product">
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="product-name">
-                                                    <a href="product-detail.html">Organic Strawberry Fruits</a>
-                                                </div>
-                                                <div>
-                                                    2 x
-                                                    <span class="product-price">£28.98</span>
-                                                </div>
-                                            </td>
-                                            <td class="action">
-                                                <a class="remove" href="#">
-                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr class="total">
-                                            <td colspan="2">Total:</td>
-                                            <td>£92.96</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="3" class="d-flex justify-content-center">
-                                                <div class="cart-button">
-                                                    <a href="product-cart.html" title="View Cart">View Cart</a>
-                                                    <a href="product-checkout.html" title="Checkout">Checkout</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('front.mobile_screen_header')
 
         <!-- header desktop -->
         @include('front.header')
@@ -813,7 +731,6 @@
 
     <!-- Template JS -->
      <script src="/front_assets/js/theme.js"></script>
-    
     @yield('script')
 </body>
 

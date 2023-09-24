@@ -108,11 +108,16 @@ class UserController extends Controller
 
         $id = Auth::User()->id;
         $profile = User::find($id);
+
+        if($profile->email == $request->email)
+            $profile->email = $request->email;
+        else
+            return redirect()->back()->with('error','Can not change Email');    
+        
         $profile->name = $request->name;
-        $profile->email = $request->email;
         $profile->phone = $request->phone; 
         $profile->gender = $request->gender; 
-        $profile->address = $request->address;
+        $profile->address = $request->address;        
         $profile->update();
         return redirect()->back()->with('message','Profile Updated Successfully..'); 
     }

@@ -74,13 +74,18 @@ class IndexController extends Controller
     public function subscribe(Request $request)
     {
         //dd($request->all());
-        $db_email = Subscribe::where('email',$request->email)->get();
-        if(count($db_email) > 0)
-            return response()->json(['message' => 'Email Alredy Exisit! Try diffrent email']);
+        $db_email = Subscribe::where('email',$request->email)->first();
+        if(isset($db_email))
+            return response()->json(['message' => 'Email alredy exisit! try diffrent email']);
         else
         $subscribe = new Subscribe;
         $subscribe->email = $request->email;
         $subscribe->save();
         return response()->json(['message' => 'Thanks For Subscribe']);
+    }
+
+     public function error()
+    {
+        return view('front.error');
     }
 }

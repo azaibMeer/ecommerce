@@ -9,7 +9,7 @@
             <div class="page-home">
                <div class="container">
                   <h1 class="text-center title-page">Your Order Has Been Completed</h1>
-                  <span>Your Order No is  {{$order_no}}</span>
+                  <h5 class="text-center">Your Order No is  {{$order_no}}</h5>
                </div>
             </div>
          </div>
