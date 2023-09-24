@@ -9,7 +9,7 @@
         </a>
        @endforeach
        @else
-         <img class="img-responsive" src="/front_assets/img/banners/no_banner.jpg">
+         <img class="img-responsive" src="{{url('/front_assets/img/banners/no_banner.jpg')}}">
        @endif
      </div>
    </div>
