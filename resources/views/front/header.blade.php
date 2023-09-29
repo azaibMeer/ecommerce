@@ -128,10 +128,8 @@
                         <div class="desktop_cart">
                             <div class="blockcart block-cart cart-preview tiva-toggle">
                                 <div class="header-cart tiva-toggle-btn">
-                                    @if(Auth::User())
+                                    @if(Auth::User() && count($items) > 0)
                                     <span class="cart-products-count">{{count($items)}}</span>
-                                    @else
-                                    <span class="cart-products-count">0</span>
                                     @endif
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 </div>
