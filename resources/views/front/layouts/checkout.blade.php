@@ -1,4 +1,4 @@
-@extends('front.master')
+@extends('front.layouts.master')
 @section('content')
 @section('class', 'product-checkout checkout-cart')
 
