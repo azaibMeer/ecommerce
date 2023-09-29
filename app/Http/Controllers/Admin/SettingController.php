@@ -48,6 +48,7 @@ class SettingController extends Controller
         $setting->instagram_link = $request->instagram_link;
         $setting->tiktok_link = $request->tiktok_link;
         $setting->newsletter_description = $request->newsletter_desc;
+        $setting->shipping_charges = $request->shipping_charges;
         
         $upload_path = "/front_assets/img/website_logo/";
         if($request->hasfile('logo_path')){
