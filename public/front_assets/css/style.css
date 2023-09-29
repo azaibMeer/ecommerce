@@ -25129,3 +25129,8 @@ footer [class~=title-block],
 	text-align: left;
 	color: #dc3545;
 }
+
+.label-register{
+	font-size: 12px;
+	float: left;
+}

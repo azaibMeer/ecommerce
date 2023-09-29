@@ -28,6 +28,7 @@
                                         <div>
                                             <div class="form-group">
                                                 <div>
+                                                    <label class="label-register">Full Name</label>
                                                     <input class="form-control" name="name" type="text" placeholder="First name">
                                                     @error('name')
                                                     <p class="error-alignment">{{ $message }}</p>
@@ -36,6 +37,7 @@
                                             </div>
                                              <div class="form-group">
                                                 <div>
+                                                    <label class="label-register">Email</label>
                                                     <input class="form-control" name="email" type="email" placeholder="Email">
                                                      @error('email')
                                                     <p class="error-alignment">{{ $message }}</p>
@@ -44,6 +46,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <div>
+                                                    <label class="label-register">Password</label>
                                                     <input class="form-control" name="password" type="password" placeholder="Password">
                                                      @error('password')
                                                     <p class="error-alignment">{{ $message }}</p>
@@ -52,12 +55,14 @@
                                             </div>
                                             <div class="row form-group">
                                                 <div class="col">
+                                                  <label class="label-register">Phone</label>
                                                   <input type="text" class="form-control" name="phone" type="number" placeholder="Phone">
                                                    @error('phone')
                                                     <p class="error-alignment">{{ $message }}</p>
                                                     @enderror
                                                 </div>
                                                 <div class="col">
+                                                    <label class="label-register">Gender</label>
                                                     <select class="form-control" name="gender">
                                                         <option value="male">Male </option>
                                                         <option value="female">Female</option>
@@ -67,6 +72,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <div>
+                                                    <label class="label-register">Address</label>
                                                     <input class="form-control" name="address" type="address" placeholder="Address">
                                                      @error('address')
                                                     <p class="error-alignment">{{ $message }}</p>
