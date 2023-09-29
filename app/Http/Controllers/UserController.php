@@ -50,10 +50,10 @@ class UserController extends Controller
         ]); 
 
         $email = $request->email;
-        $db_email = User::where('email',$email)->get();
+        $db_email = User::where('email',$email)->first();
 
-        if(count($db_email) > 0)
-            return redirect()->back()->with('error','Email Alredy Exisit.. Try Other Email ');
+        if(isset($db_email))
+            return redirect()->back()->with('error','Email alredy in used');
         else
 
         $user = new User;
@@ -67,7 +67,7 @@ class UserController extends Controller
         $user->user_type = 2;
         $user->save();
         return redirect()->back()
-            ->with('message','Account Created Successfully.');
+            ->with('message','Account created success');
 
     }
 

@@ -1,4 +1,4 @@
-@extends('front.master')
+@extends('front.layouts.master')
 @section('class', 'user-login blog')
 @section('content')
 <div class="main-content">

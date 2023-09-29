@@ -1,4 +1,4 @@
-@extends('front.master')
+@extends('front.layouts.master')
 @section('content')
 @section('id', 'product-detail')
 <div class="main-content">

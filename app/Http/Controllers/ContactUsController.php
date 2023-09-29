@@ -13,7 +13,7 @@ class ContactUsController extends Controller
     public function index()
     {
        $data['setting'] = Setting::first();
-       return view('front.contact',$data);
+       return view('front.layouts.contact',$data);
     }
 
     /**
@@ -30,9 +30,9 @@ class ContactUsController extends Controller
     public function store(Request $request)
     {
 
-        $db_email = Contact::where('email',$request->email)->get();
-        if(count($db_email) > 0)
-            return response()->json(['message' => 'Email Alredy Exisit! Try Diffrent Email']);
+        $db_email = Contact::where('email',$request->email)->first();
+        if(isset($db_email))
+            return response()->json(['message' => 'Email alredy exisit']);
         else
             $contact = new Contact;
             $contact->name = $request->name;

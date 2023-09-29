@@ -1,4 +1,4 @@
-@extends('front.master')
+@extends('front.layouts.master')
 @section('class', 'blog')
 @section('id', 'contact')
 @section('content')

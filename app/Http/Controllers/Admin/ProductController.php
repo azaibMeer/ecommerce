@@ -141,6 +141,6 @@ class ProductController extends Controller
        $data['product'] = Product::where('slug',$slug)->first();
        $product_id = $data['product']['id']; 
        $data['product_images'] = ProductImage::where('product_id',$product_id)->where('status',1)->take(5)->get();
-       return view('front.product_detail',$data);
+       return view('front.layouts.product_detail',$data);
     }
 }

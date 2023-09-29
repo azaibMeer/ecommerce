@@ -20,7 +20,7 @@ class WishlistController extends Controller
             ->select('products.*','wishlist.created_at','wishlist.id','wishlist.product_id')
             ->where('wishlist.user_id',$user_id)->get();
 
-            return view('front.wishlist',$data);
+            return view('front.layouts.wishlist',$data);
     }
 
     public function addToWishlist($id)

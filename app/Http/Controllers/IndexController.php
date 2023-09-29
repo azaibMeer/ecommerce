@@ -20,7 +20,7 @@ class IndexController extends Controller
         $data['sliders'] = Slider::where('status',1)->take(3)->orderBy('id','desc')->get();
         $data['featured_products'] = Product::where('status',1)->get();
         $data['setting'] = Setting::first();
-        return view('front.index',$data);
+        return view('front.layouts.index',$data);
     }
 
     /**

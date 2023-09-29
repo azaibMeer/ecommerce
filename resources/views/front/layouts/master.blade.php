@@ -40,17 +40,17 @@
 <body id="@yield('id', 'home')" class="@yield('class', '')">
     <header>
         <!-- header left mobie -->
-        @include('front.mobile_screen_header')
+        @include('front.layouts.mobile_screen_header')
 
         <!-- header desktop -->
-        @include('front.header')
+        @include('front.layouts.header')
     </header>
 
     <!-- main content -->
     @yield('content')
 
     <!-- footer -->
-    @include('front.footer')
+    @include('front.layouts.footer')
 
     <!-- back top top -->
     <div class="back-to-top">

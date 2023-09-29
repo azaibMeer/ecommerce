@@ -22,12 +22,12 @@ class CartController extends Controller
                 ->select('products.name','products.slug','products.main_image','checkout.*')
                 ->where('checkout.user_id',Auth::User()->id)->get();
         $data['total'] =  Checkout::where('user_id',Auth::User()->id)->sum('price');
-        return view('front.cart',$data);
+        return view('front.layouts.cart',$data);
     }
 
     public function addToCart(Request $request , $id)
     {   
-        dd($request->all());
+        //dd($request->all());
         if(Auth::User()) 
         {
             $product = Product::find($id);
@@ -92,7 +92,7 @@ class CartController extends Controller
                 ->select('products.name','products.slug','products.main_image','checkout.*')
                 ->where('checkout.user_id',Auth::User()->id)->get();
             $data['total'] =  Checkout::where('user_id',Auth::User()->id)->sum('price');
-            return view('front.checkout',$data);
+            return view('front.layouts.checkout',$data);
 
     }
 
@@ -162,6 +162,6 @@ class CartController extends Controller
 
         $data['order_no'] = $order_no;
         $data['setting'] = Setting::first();
-        return view('front.order_complete',$data);
+        return view('front.layouts.order_complete',$data);
     }
 }
