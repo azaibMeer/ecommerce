@@ -34,7 +34,7 @@
                             </table>
 
                         </div>
-                        <a href="{{url('/user/profile')}}" class="btn btn-primary" data-link-action="sign-in">
+                        <a href="{{url('/user/profile')}}" class="btn btn-primary">
                             Update Profile
                         </a>
                         <div class="order">
