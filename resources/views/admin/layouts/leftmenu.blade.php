@@ -42,7 +42,7 @@
                                     <span class="nav-link-text">Dashboard</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="{{ (request()->is('category/*')) ? 'active open' : '' }}">
                                 <a href="{{url('/category/list')}}" title="Manage category">
                                     <i class="fal fa-cog"></i>
                                     <span class="nav-link-text">Category</span>

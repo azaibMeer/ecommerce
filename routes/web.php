@@ -54,7 +54,7 @@ Route::post('/authenticate', [AdminAuthController::class, 'authenticate']);
 Route::group(['middleware'=> 'admin'],function(){
 
     Route::get('/admin/dashboard', [DashbordController::class, 'index']);
-    Route::get('/category_list', [CategoryController::class, 'show']);
+    Route::get('/category/list', [CategoryController::class, 'show']);
     Route::get('/category/add', [CategoryController::class, 'index']);
     Route::get('/category/edit/{id}', [CategoryController::class, 'edit']);
     Route::post('/category/update/{id}', [CategoryController::class, 'update']);
