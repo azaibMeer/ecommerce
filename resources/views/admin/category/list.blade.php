@@ -36,7 +36,7 @@
                            <th>Id</th>
                            <th>Image</th>
                            <th>Category</th>
-                           <th>Category Type</th>
+                           <th>Parent Category</th>
                            <th>Status</th>
                            <th>Actions</th>
                         </tr>
