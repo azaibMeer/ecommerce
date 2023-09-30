@@ -21,7 +21,7 @@
                 <!-- logo -->
                 <div class="mobile-logo">
                     <a href="{{url('/')}}">
-                        <img class="logo-mobile img-fluid" src="/front_assets/img/home/logo-mobie.png" alt="Prestashop_Furnitica">
+                        <img class="logo-mobile img-fluid" src="{{url($setting->logo_path)}}" alt="Prestashop_Furnitica">
                     </a>
                 </div>
 

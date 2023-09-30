@@ -17,7 +17,7 @@
                     <div class="col-sm-2 col-md-2 d-flex align-items-center">
                         <div id="logo">
                             <a href="{{url('/')}}">
-                                <img class="img-fluid" src="/front_assets/img/home/logo.png" alt="logo">
+                                <img class="img-fluid" src="{{url($setting->logo_path)}}" alt="logo">
                             </a>
                         </div>
                     </div>
