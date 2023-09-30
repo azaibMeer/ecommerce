@@ -34,11 +34,17 @@
                            Website Name
                            </label>
                            <input type="text" class="form-control" placeholder="Website name" name="website_name" value="{{$setting->website_name}}">
+                           @error('website_name')
+                                 <span class="text-danger">{{$message}}</span>
+                           @enderror
                         </div>
                         <div class="col">
                            <label class="form-label">Email</label>
                            <input type="email" class="form-control" placeholder="Website email" name="email" 
                            value="{{$setting->email}}">
+                           @error('email')
+                                 <span class="text-danger">{{$message}}</span>
+                           @enderror
                         </div>
                      </div>
                      <div class="form-row form-group">
@@ -48,6 +54,9 @@
                            </label>
                            <input type="number" class="form-control" placeholder="Phone" name="phone"
                            value="{{$setting->phone}}" >
+                            @error('phone')
+                                 <span class="text-danger">{{$message}}</span>
+                           @enderror
                         </div>
                         <div class="col">
                            <label class="form-label">
@@ -55,12 +64,18 @@
                            </label>
                            <input type="number" class="form-control" placeholder="Mobile" name="mobile"
                            value="{{$setting->mobile}}" >
+                           @error('mobile')
+                                 <span class="text-danger">{{$message}}</span>
+                           @enderror
                         </div>
                         <div class="col">
                            <label class="form-label">Contact
                            </label>
                            <input type="number" class="form-control" placeholder="Phone" name="contact" 
                            value="{{$setting->contact}}">
+                            @error('contact')
+                                 <span class="text-danger">{{$message}}</span>
+                           @enderror
                         </div>
                      </div>
                      <div class="form-row form-group">
@@ -161,7 +176,7 @@
 	                             </div>
                               @endif
                               @error('logo_path')
-                              	<span>{{$message}}</span>
+                              	<span class="text-danger">{{$message}}</span>
                               @enderror
                            </div>
                         </div>
@@ -179,7 +194,7 @@
 	                              </div>
                               @endif
                               @error('footer_logo')
-                              	<span>{{$message}}</span>
+                              	<span class="text-danger">{{$message}}</span>
                               @enderror
                            </div>
                         </div>

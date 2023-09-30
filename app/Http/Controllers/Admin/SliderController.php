@@ -125,7 +125,7 @@ class SliderController extends Controller
     {
         $slider = Slider::find($id);
         $slider->delete();
-        return redirect('/slider/list')->with('message' , 'Delete Succcess');
+        return redirect('/slider/list')->with('error' , 'Delete Succcess');
     }
 
 

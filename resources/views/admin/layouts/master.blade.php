@@ -833,5 +833,6 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
 						+ src/../jquery-snippets.js (core) -->
         <script src="{{url('/backend_assets/js/vendors.bundle.js')}}"></script>
         <script src="{{url('/backend_assets/js/app.bundle.js')}}"></script>
+        @yield('scripts')
     </body>
 </html>

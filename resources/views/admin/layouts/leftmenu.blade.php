@@ -64,6 +64,13 @@
                                     <span class="nav-link-text">Settings</span>
                                 </a>
                             </li>
+                            <li class="{{ (request()->is('slider/list')) || (request()->is('slider/add')) ? 
+                                'active open' : '' }}">
+                                <a href="{{url('/slider/list')}}" title="Sliders">
+                                    <i class="fal fa-cog"></i>
+                                    <span class="nav-link-text">Sliders</span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </aside>
