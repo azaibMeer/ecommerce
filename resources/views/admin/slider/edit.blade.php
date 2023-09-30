@@ -1,148 +1,95 @@
 @extends('admin.layouts.master')
 @section('content')
-
-<div class="toolbar" id="kt_toolbar">
-      <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
-         <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
-            <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Slider</h1>
-            <span class="h-20px border-gray-300 border-start mx-4"></span>
-            
-         </div>
-         <!-- <div class="d-flex align-items-center gap-2 gap-lg-3">
-            <a href="{{url('/admin/slider/list')}}" class="btn btn-sm btn-primary" >Slider List</a>
-         </div> -->
-      </div>
+<main id="js-page-content" role="main" class="page-content">
+   <div class="subheader">
+      <h1 class="subheader-title">
+         <i class='subheader-icon fal fa-edit'></i> Sliders
+      </h1>
    </div>
-   <div class="post d-flex flex-column-fluid" id="kt_post">
-      <div id="kt_content_container" class="container-xxl">
-      			@if(session()->has('message'))
-                            <div class="alert alert-success">
-                                {{ session()->get('message') }}
-                            </div>
-                        @elseif(session()->has('error'))
-                            <div class="alert alert-danger">
-                                {{ session()->get('error') }}
-                            </div>
-               @endif
-         <form action="{{url('/slider/update/'.$slider->id)}}" method="post" id="kt_ecommerce_add_category_form" class="form d-flex flex-column flex-lg-row" 
-            enctype="multipart/form-data"  >
-            @csrf
-           <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
-               <div class="card card-flush py-4">
-                  <div class="card-header">
-                     <div class="card-title">
-                        <h2>Slider Image</h2>
-                     </div>
-                  </div>
-                  <div class="card-body text-center pt-0">
-                     <div class="image-input image-input-empty image-input-outline mb-3" data-kt-image-input="true" style="background-image: url('{{$slider->image}}')">
-                        <div class="image-input-wrapper w-150px h-150px"></div>
-                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
-                        <i class="bi bi-pencil-fill fs-7"></i>
-                        <input type="file" 
-                           name="image"  accept=".png, .jpg, .jpeg"  />
-                        </label>
-                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
-                        <i class="bi bi-x fs-2"></i>
-                        </span>
-                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
-                        <i class="bi bi-x fs-2"></i>
-                        </span>
-                        
-                     </div>
-
-                     <div class="text-muted fs-7">Set the Slider image.Image should be 1920 x 1010 px</div>
-                     <span class="text-danger">
-                     	@error('image')
-                     	{{$message}}
-                     	@enderror
-                     </span>
-                  </div>
-               </div>
-               <div class="card card-flush py-4">
-                  <div class="card-header">
-                     <div class="card-title">
-                        <h2>Status</h2>
-                     </div>
-                  </div>
-                  <div class="card-body pt-0">
-                     <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" id="kt_ecommerce_add_category_status_select" name="status" required>
-                       
-                        <option value="1" {{$slider->status == 1 ? 'selected' : ''}}>Active</option>
-                        <option value="0" {{$slider->status == 0 ? 'selected' : ''}}>Inactive</option>
-                     </select>
-                     
-                    </div>
-               </div>
-              </div>
-            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
-               <!--begin::General options-->
-               <div class="card card-flush py-4">
-                  <!--begin::Card header-->
-                  <div class="card-header">
-                     <div class="card-title">
-                        <h2>General</h2>
-                     </div>
-                  </div>
-                  <!--end::Card header-->
-                  <!--begin::Card body-->
-                  <div class="card-body pt-0">
-                     <!--begin::Input group-->
-                  <div class="mb-10 fv-row">
-                     <div class="row clearfix">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="form-group">
-                                <label class="required form-label">Slider Title</label>
-                                 <input type="text" name="slider_title" class="form-control mb-2" placeholder="title" value="{{$slider->name}}"  />
-                                 <span class="text-danger">
-			                     	@error('slider_title')
-			                     	{{$message}}
-			                     	@enderror
-			                     </span>
-                            </div>
-                        </div>
-                        
-                    </div>
-                 </div>
-                 <div class="mb-10 fv-row">
-                     <div class="row clearfix">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="form-group">
-                                <label class="required form-label">Slider Link</label>
-                                 <input type="text" name="slider_link" class="form-control mb-2" placeholder="link" value="{{$slider->link}}"  />
-                            </div>
-                        </div>
-                        
-                    </div>
-                 </div>
-                 
-                <div class="mb-10 fv-row">
-                   <div class="row clearfix">
-                      <div class="col-lg-12 col-md-12 col-sm-12">
-                         <div class="form-group">
-                            <label class="required form-label"> Description</label>
-                            <textarea class="form-control mb-2" name="description" placeholder="Enter your description" rows="4">
-                              {{$slider->description}}
-                            </textarea>
-                         </div>
-                      </div>
-                   </div>
-              </div>
-               <div class="d-flex justify-content-end">
-                  <!--begin::Button-->
-                  <a href="" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
-                  <!--end::Button-->
-                  <!--begin::Button-->
-                  <button type="submit"  class="btn btn-primary btn-sm">
-                  <span class="indicator-label">Save Changes</span>
-                  </button>
-                  <!--end::Button-->
-               </div>
-               </div>
-                  <!--end::Card header-->
-            </div> 
+   @if(session()->has('message'))
+   <div class="alert alert-success" role="alert">
+    <strong>Settings</strong> updated success
+   </div>
+   @elseif(session()->has('error'))
+   <div class="alert alert-danger" role="alert">
+    <strong>Oh snap!</strong>Change a few things up and try submitting again.
+   </div>
+   @endif
+   <div class="row">
+      <div class="col-xl-6">
+         <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+               <h2>
+                  Slider edit
+               </h2>
             </div>
-         </form>
+            <div class="panel-container show">
+               <div class="panel-content">
+                  <form method="post" action="{{url('/slider/update/'.$slider->id)}}" 
+                     enctype="multipart/form-data">
+                     @csrf
+                     <div class="form-row form-group">
+                        <div class="col">
+                           <label class="form-label">
+                              Name
+                           </label>
+                           <input type="text" class="form-control" placeholder="Slider name" name="slider_title" value="{{$slider->name}}">
+                           @error('slider_title')
+                                 <span class="text-danger">{{$message}}</span>
+                           @enderror
+                        </div>
+                        <div class="col">
+                           <label class="form-label">Link</label>
+                           <input type="text" class="form-control" placeholder="Slider link" name="slider_link" value="{{$slider->link}}">
+                           @error('slider_link')
+                                 <span class="text-danger">{{$message}}</span>
+                           @enderror
+                        </div>
+                     </div>
+                     <div class="form-group">
+                        <label class="form-label" for="example-textarea">Description
+                        </label>
+                        <textarea class="form-control" rows="2" name="description">
+                         {{$slider->description}}
+                        </textarea>
+                     </div>
+                     <div class="form-row form-group">
+                        <div class="col">
+                           <label class="form-label">Image</label>
+                           <div class="custom-file">
+                              <input type="file" class="custom-file-input" name="image">
+                              <label class="custom-file-label">Choose file</label>
+                              <span class="help-block">
+                                  Image should be 1920 x 1010 px
+                              </span>
+                              @if(isset($slider->image))
+                                <div>
+                                    <img src="{{url($slider->image)}}" width="70px">
+                                </div>
+                              @endif
+                              @error('image')
+                                 <span class="text-danger">{{$message}}</span>
+                              @enderror
+                           </div>
+                        </div>
+                        <div class="col">
+                           <label class="form-label">Status</label>
+                           <select class="form-control" id="example-select" name="status">
+                              <option value="1" {{$slider->status == 1 ? 'selected' : ''}}>Active</option>
+                              <option value="0" {{$slider->status == 0 ? 'selected' : ''}}>Inactive</option>
+                           </select>
+                           
+                        </div>
+                     </div>
+                     <button type="submit" class="btn btn-primary waves-effect waves-themed">
+                    Update slider</button>
+                  </form>
+               </div>
+            </div>
+         </div>
       </div>
    </div>
+</main>
+
+   
 @endsection

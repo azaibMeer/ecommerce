@@ -54,17 +54,16 @@
                                     <span class="nav-link-text">Product</span>
                                 </a>
                             </li>
+                            <li class="{{ (request()->is('slider/*')) ? 'active open' : '' }}">
+                                <a href="{{url('/slider/list')}}" title="Sliders">
+                                    <i class="fal fa-cog"></i>
+                                    <span class="nav-link-text">Sliders</span>
+                                </a>
+                            </li>
                             <li class="{{ (request()->is('website/setting')) ? 'active open' : '' }}">
                                 <a href="{{url('/website/setting')}}" title="Website settings">
                                     <i class="fal fa-cog"></i>
                                     <span class="nav-link-text">Settings</span>
-                                </a>
-                            </li>
-                            <li class="{{ (request()->is('slider/list')) || (request()->is('slider/add')) ? 
-                                'active open' : '' }}">
-                                <a href="{{url('/slider/list')}}" title="Sliders">
-                                    <i class="fal fa-cog"></i>
-                                    <span class="nav-link-text">Sliders</span>
                                 </a>
                             </li>
                         </ul>
