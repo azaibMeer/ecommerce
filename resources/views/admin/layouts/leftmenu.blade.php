@@ -23,15 +23,11 @@
                             <div class="info-card-text">
                                 <a href="#" class="d-flex align-items-center text-white">
                                     <span class="text-truncate text-truncate-sm d-inline-block">
-                                        @if(Auth::check())
                                         {{ucfirst(Auth::User()->name)}}
-                                        @endif
                                     </span>
                                 </a>
                                 <span class="d-inline-block text-truncate text-truncate-sm">
-                                     @if(Auth::check())
-                                        {{ucfirst(Auth::User()->city)}}
-                                        @endif
+                                    {{ucfirst(Auth::User()->city)}}  
                                 </span>
                             </div>
                             <img src="/backend_assets/img/card-backgrounds/cover-2-lg.png" class="cover" alt="cover">
