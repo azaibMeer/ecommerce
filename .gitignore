@@ -12,6 +12,7 @@ vendor/*
 public/upload/*
 public/uploads/*
 vendor/autoload.php
+storage/*
 # Node artifact files
 node_modules/
 dist/
