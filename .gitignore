@@ -3,8 +3,8 @@
 # Learn more about .gitignore:
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
-public/frontend_assets/images
-public/backend_assets/assets/images
+public/front_assets/*
+public/backend_assets/*
 public/upload/
 upload/ 
 vendor/*
