@@ -47,7 +47,7 @@
                            <td>{{$category->id}}</td>
                            <td>
                               @if(isset($category->image))
-                              <img src="{{url($category->image)}}">
+                              <img src="{{url($category->image)}}" width="50px">
                               @else
                               <span class="text-danger">Category have no image</span>
                               @endif
