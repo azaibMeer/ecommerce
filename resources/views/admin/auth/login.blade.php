@@ -24,15 +24,7 @@
     </head>
     <body>
         <div class="blankpage-form-field">
-        	@if(session()->has('message'))
-               <div class="alert alert-success">
-                 {{ session()->get('message') }}
-               </div>
-               @elseif(session()->has('error'))
-               <div class=" alert alert-danger w-lg-500px ">
-                {{ session()->get('error') }}
-               </div>
-            @endif
+        	
             <div class="page-logo m-0 w-100 align-items-center justify-content-center rounded border-bottom-left-radius-0 border-bottom-right-radius-0 px-4">
                 <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center">
                     <!-- <img src="{{$setting->logo_path}}" alt="SmartAdmin WebApp" aria-roledescription="logo"> -->
@@ -42,6 +34,15 @@
             </div>
             
             <div class="card p-4 border-top-left-radius-0 border-top-right-radius-0">
+                @if(session()->has('message'))
+               <div class="alert alert-success">
+                 {{ session()->get('message') }}
+               </div>
+               @elseif(session()->has('error'))
+               <div class=" alert alert-danger w-lg-500px ">
+                {{ session()->get('error') }}
+               </div>
+            @endif
                 <form action="{{url('/authenticate')}}" method="post">
                 	@csrf
                     <div class="form-group">

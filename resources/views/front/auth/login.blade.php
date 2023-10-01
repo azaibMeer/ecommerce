@@ -7,20 +7,19 @@
                 <div id="main">
                     <div class="container">
                         <h1 class="text-center title-page">Please Login</h1>
-                        <div class="login-form">
                         @if(session()->has('message'))
-                            <div class="alert alert-success">
-                                {{ session()->get('message') }}
-                            </div>
-                        @elseif(session()->has('error'))
-                            <div class="alert alert-danger">
-                                {{ session()->get('error') }}
-                            </div>
+                           <div class="alert alert-success">
+                             {{ session()->get('message') }}
+                           </div>
+                           @elseif(session()->has('error'))
+                           <div class=" alert alert-danger w-lg-500px ">
+                            {{ session()->get('error') }}
+                           </div>
                         @endif
+                        <div class="login-form">
                             <form id="customer-form" action="{{url('/authenticate')}}" method="post">
                                 @csrf
                                 <div>
-                                    
                                     <div class="form-group no-gutters">
                                         <input class="form-control" name="email" type="email" placeholder=" Email">
                                     </div>
