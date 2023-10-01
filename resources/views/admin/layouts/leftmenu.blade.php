@@ -38,26 +38,32 @@
                         <ul id="js-nav-menu" class="nav-menu">
                             <li class="{{ (request()->is('admin/dashboard')) ? 'active open' : '' }}">
                                 <a href="{{url('/admin/dashboard')}}" title="Dashboard">
-                                    <i class="fal fa-cog"></i>
+                                    <i class="fal fa-tachometer"></i>
                                     <span class="nav-link-text">Dashboard</span>
                                 </a>
                             </li>
                             <li class="{{ (request()->is('category/*')) ? 'active open' : '' }}">
                                 <a href="{{url('/category/list')}}" title="Manage category">
-                                    <i class="fal fa-cog"></i>
+                                    <i class="fal fa-list-alt"></i>
                                     <span class="nav-link-text">Category</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{url('admin/dashboard')}}" title="Manage products">
+                                <a href="{{url('/product/add/')}}" title="Manage products">
                                     <i class="fal fa-edit"></i>
                                     <span class="nav-link-text">Product</span>
                                 </a>
                             </li>
                             <li class="{{ (request()->is('slider/*')) ? 'active open' : '' }}">
                                 <a href="{{url('/slider/list')}}" title="Sliders">
-                                    <i class="fal fa-cog"></i>
+                                    <i class="fal fa-image"></i>
                                     <span class="nav-link-text">Sliders</span>
+                                </a>
+                            </li>
+                            <li class="{{ (request()->is('users/*')) ? 'active open' : '' }}">
+                                <a href="{{url('/users/list/')}}" title="Users">
+                                    <i class="fal fa-user"></i>
+                                    <span class="nav-link-text">Users</span>
                                 </a>
                             </li>
                             <li class="{{ (request()->is('website/setting')) ? 'active open' : '' }}">

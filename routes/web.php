@@ -76,6 +76,8 @@ Route::group(['middleware'=> 'admin'],function(){
      Route::get('/product/delete/{id}', [ProductController::class, 'destroy']);
      Route::get('/website/setting', [SettingController::class, 'index']);
      Route::post('/update/setting/{id}', [SettingController::class, 'update']);
+
+     Route::get('/users/list', [UserController::class, 'show']);
     
 
 });

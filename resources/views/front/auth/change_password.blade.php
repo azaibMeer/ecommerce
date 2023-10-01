@@ -1,4 +1,4 @@
-@extends('front.master')
+@extends('front.layouts.master')
 @section('class', 'user-reset-password blog')
 @section('content')
 <div class="main-content">

@@ -74,9 +74,11 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $data['users'] = User::orderBy('id','desc')->get();
+        $data['setting'] = Setting::first();
+        return view('admin.user.list',$data);
     }
 
     /**
