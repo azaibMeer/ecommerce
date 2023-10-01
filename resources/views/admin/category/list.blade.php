@@ -97,7 +97,8 @@
    {
        $('#dt-basic-example').dataTable(
        {
-           responsive: true
+           responsive: true,
+           order: [[0, 'desc']]
        });
    
        $('.js-thead-colors a').on('click', function()
