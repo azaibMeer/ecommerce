@@ -86,7 +86,6 @@
                                         </div>
                                         <div class="content-contact hours-contact">
                                             <p>{{$setting->opening_hours}}</p>
-                                            <span>(Except Holidays)</span>
                                         </div>
                                     </div>
                                 </div>
@@ -149,7 +148,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="block m-top1">
+                            <!-- <div class="block m-top1">
                                 <div class="block-content">
                                     <div class="payment-content">
                                         <div class="title-block">
@@ -159,9 +158,8 @@
                                             <img class="img-fluid" src="/front_assets/img/home/payment.png" alt="img">
                                         </div>
                                     </div>
-                                    <!-- Popup newsletter -->
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

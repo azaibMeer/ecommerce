@@ -11,7 +11,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
     <head>
         <meta charset="utf-8">
         <title>
-            Privacy - Application Intel - SmartAdmin v4.4.1
+           {{$setting->website_name}}
         </title>
         <meta name="description" content="Privacy">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

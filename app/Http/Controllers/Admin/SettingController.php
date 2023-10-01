@@ -30,9 +30,9 @@ class SettingController extends Controller
         'footer_logo' => '|image|mimes:jpeg,png,jpg|dimensions:width=127,height=24',
         'website_name' => 'required',
         'email' => 'required',
-        /*'phone' => 'digits:11',
+        'phone' => 'digits:11',
         'contact' => 'digits:11',
-        'mobile' => 'digits:11'*/
+        'mobile' => 'digits:11'
         
        ]);
 

@@ -38,7 +38,7 @@ class CategoryController extends Controller
         $user_id = Auth::User()->id;
         $request->validate([ 
 
-        'image' => 'required', 
+        /*'image' => 'required', */
         'category_name' => 'required',
         'sub_category' => 'required',
         'status'=> 'required',
