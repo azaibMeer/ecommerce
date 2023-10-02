@@ -60,7 +60,8 @@
                                     <span class="nav-link-text">Sliders</span>
                                 </a>
                             </li>
-                            <li class="{{ (request()->is('users/*')) ? 'active open' : '' }}">
+                            <li class="{{ (request()->is('user/*') || request()->is('users/*')) 
+                                ? 'active open' : '' }}">
                                 <a href="{{url('/users/list/')}}" title="Users">
                                     <i class="fal fa-user"></i>
                                     <span class="nav-link-text">Users</span>

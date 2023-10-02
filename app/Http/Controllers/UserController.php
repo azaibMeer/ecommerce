@@ -76,7 +76,7 @@ class UserController extends Controller
      */
     public function show()
     {
-        $data['users'] = User::orderBy('id','desc')->get();
+        $data['users'] = User::where('user_type',2)->orderBy('id','desc')->get();
         $data['setting'] = Setting::first();
         return view('admin.user.list',$data);
     }
@@ -84,9 +84,13 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $data['user'] = User::where('id',$id)->where('user_type',2)->first();
+        if(isset($data['user']))
+            return view("admin.user.edit",$data);
+        else
+            return redirect()->back();
     }
 
     /**
@@ -95,11 +99,10 @@ class UserController extends Controller
     public function profile()
     {
         $data['user'] = Auth::User();
-        $data['setting'] = Setting::first();
         return view('front.user.profile',$data);
     }
 
-    public function updateProfile(Request $request)
+    public function update(Request $request)
     {
         //dd($request->all());
         $request->validate([
@@ -129,9 +132,11 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/users/list')->with('error' , 'Delete Succcess');
     }
 
     public function change_password()
@@ -180,4 +185,42 @@ class UserController extends Controller
         }
 
     }
+
+
+    public function user_update_by_admin(Request $request ,$id){
+
+
+        $request->validate([
+        'phone'=> 'digits:11',
+       ]);
+        //dd($request->all());
+        $user = User::find($id);
+
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone = $request->phone; 
+            $user->gender = $request->gender; 
+            $user->address = $request->address;        
+            $user->date_of_birth = $request->date_of_birth;        
+            $user->zip_code = $request->zip_code;        
+            $user->city = $request->city;        
+            $user->status = $request->status;
+            if(isset($request->password)) 
+                $user->password = Hash::make($request->password);
+
+            $upload_path = "/backend_assets/img/userprofile/";
+            if($request->hasfile('image')){
+
+                $file = $request->file('image');
+                $imageName = time(). "_".$file->GetClientOriginalName();
+                $filename = $upload_path.$imageName;
+
+                $file->move(public_path($upload_path) , $filename);
+                $user->profile = $filename; 
+             }
+            $user->update();
+            return redirect()->back()->with('message','User updated success');
+            
+    }
+
 }
