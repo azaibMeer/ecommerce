@@ -62,9 +62,9 @@
                               <a href="{{url('/user/delete/'.$user->id)}}" class="btn btn-danger btn-sm btn-icon waves-effect waves-themed">
                               <i class="fal fa-trash"></i>
                               </a>
-                              <a href="{{url('/user/detail/'.$user->id)}}" class="btn btn-warning btn-sm btn-icon waves-effect waves-themed">
+                              {{-- <a href="{{url('/user/detail/'.$user->id)}}" class="btn btn-warning btn-sm btn-icon waves-effect waves-themed">
                               <i class="fal fa-eye"></i>
-                              </a>
+                              </a> --}}
                            </td>
                         </tr>
                         @endforeach
