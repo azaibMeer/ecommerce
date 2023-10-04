@@ -43,7 +43,7 @@
                                 </a>
                             </li>
                             <li class="{{ (request()->is('category/*')) ? 'active open' : '' }}">
-                                <a href="{{url('/category/list')}}" title="Manage category">
+                                <a href="{{url('/category/list/')}}" title="Manage category">
                                     <i class="fal fa-list-alt"></i>
                                     <span class="nav-link-text">Category</span>
                                 </a>

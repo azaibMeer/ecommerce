@@ -76,8 +76,7 @@ class CategoryController extends Controller
      */
     public function show()
     {   
-       $data['setting'] = Setting::first();
-        $data['categories'] = Category::LeftJoin('categories as c2' ,'categories.parent_id','c2.id')
+       $data['categories'] = Category::LeftJoin('categories as c2' ,'categories.parent_id','c2.id')
                             ->select('categories.*','c2.name as child_category')
                             ->orderBy('categories.id','desc')
                             ->get();
@@ -152,8 +151,13 @@ class CategoryController extends Controller
     public function category_product($slug){
 
             $category = Category::where('slug',$slug)->first();
-            if(isset($category))
-                 $data['products']  = Product::where('category_id',$category->id)->get();
-            return view('front.category_products',$data);
+            if(isset($category)){
+                $data['products']  = Product::where('category_id',$category->id)->get();
+                return view('front.layouts.category_products',$data);
+            }else{
+                return redirect()->back();
+            }
+                 
+            
     }
 }

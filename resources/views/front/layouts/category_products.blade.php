@@ -1,4 +1,4 @@
-@extends('front.master')
+@extends('front.layouts.master')
 @section('class', 'product-grid-sidebar-left')
 @section('id', 'product-sidebar-left')
 @section('content')

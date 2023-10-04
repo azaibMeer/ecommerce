@@ -39,9 +39,8 @@ Route::get('/', [IndexController::class, 'index']);
 Route::post('/subscribe', [IndexController::class, 'subscribe']); 
 Route::get('/contact', [ContactUsController::class, 'index']); 
 Route::post('/store/contact', [ContactUsController::class, 'store']);
-Route::get('/p_category/{id}', [CategoryController::class, 'category_product']);
 Route::get('/product/detail/{slug}', [ProductController::class, 'detail']);
-Route::get('/category/{slug}', [CategoryController::class, 'category_product']);
+
 
 
 // admin routes // 
@@ -131,3 +130,5 @@ Route::get('/user/logout', function(Request $request){
         $request->session()->regenerateToken();
         return redirect('/');
 });
+
+Route::get('/category/{slug}', [CategoryController::class, 'category_product']);
