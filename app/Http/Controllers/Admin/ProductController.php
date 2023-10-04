@@ -102,8 +102,8 @@ class ProductController extends Controller
      */
     public function show()
     {   
-        $data['products'] = product::OrderBy('id','desc')->get();
-        $data['setting'] = Setting::first();
+        $data['products'] = product::join('categories','categories.id','products.category_id')
+        ->select('products.*','categories.name as category_name')->OrderBy('products.id','desc')->get();
         return view('admin.product.list',$data);
     }
 

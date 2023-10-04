@@ -48,8 +48,8 @@
                                     <span class="nav-link-text">Category</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{url('/product/add/')}}" title="Manage products">
+                            <li class="{{ (request()->is('product/*')) ? 'active open' : '' }}">
+                                <a href="{{url('/product/list/')}}" title="Manage products">
                                     <i class="fal fa-edit"></i>
                                     <span class="nav-link-text">Product</span>
                                 </a>

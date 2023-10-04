@@ -14,8 +14,7 @@ class SliderController extends Controller
      */
     public function index()
     {   
-        $data['setting'] = Setting::first();
-        return view('admin.slider.add',$data);  
+        return view('admin.slider.add');  
     }
 
     /**

@@ -151,15 +151,9 @@ class CategoryController extends Controller
 
     public function category_product($slug){
 
-            //dd($slug);
-            $data['setting'] = Setting::first();
-            
             $category = Category::where('slug',$slug)->first();
-            //dd($category);
-            if(empty($category))
-                return redirect(url('/error'));
-            else
-            $data['products']  = Product::where('category_id',$category->id)->get();
+            if(isset($category))
+                 $data['products']  = Product::where('category_id',$category->id)->get();
             return view('front.category_products',$data);
     }
 }

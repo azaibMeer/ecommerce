@@ -6,15 +6,6 @@
          <i class='subheader-icon fal fa-edit'></i> Sliders
       </h1>
    </div>
-   @if(session()->has('message'))
-   <div class="alert alert-success" role="alert">
-    <strong>Settings</strong> updated success
-   </div>
-   @elseif(session()->has('error'))
-   <div class="alert alert-danger" role="alert">
-    <strong>Oh snap!</strong>Change a few things up and try submitting again.
-   </div>
-   @endif
    <div class="row">
       <div class="col-xl-6">
          <div id="panel-1" class="panel">
@@ -62,6 +53,7 @@
                                   Image should be 1920 x 1010 px
                               </span>
                               @error('image')
+                                 <br>
                                  <span class="text-danger">{{$message}}</span>
                               @enderror
                            </div>

@@ -17,9 +17,8 @@ class IndexController extends Controller
     {   
         $data['categories'] = Category::with('children')->where('parent_id','0')
         ->where('status','1')->take(10)->get();
-        $data['sliders'] = Slider::where('status',1)->take(3)->orderBy('id','desc')->get();
+        $data['sliders'] = Slider::where('status', 1)->take(3)->orderBy('id','desc')->get();
         $data['featured_products'] = Product::where('status',1)->get();
-        $data['setting'] = Setting::first();
         return view('front.layouts.index',$data);
     }
 

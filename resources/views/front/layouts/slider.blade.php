@@ -1,16 +1,13 @@
+@if(count($sliders) > 0)
 <div class="section banner">
      <div class="tiva-slideshow-wrapper">
       <div id="tiva-slideshow" class="nivoSlider">
-        @if(count($sliders) > 0)
         @foreach($sliders as $slider)
-        <a href="#">
-         <img class="img-responsive" src="{{$slider->image}}" 
-         title="{{$slider->name}}" alt="{{$slider->name}}">
+        <a href="{{$slider->link}}">
+         <img class="img-responsive fit-into-container" src="{{$slider->image}}" alt="{{$slider->name}}">
         </a>
        @endforeach
-       @else
-         <img class="img-responsive" src="{{url('/front_assets/img/banners/no_banner.jpg')}}">
-       @endif
      </div>
    </div>
 </div>
+@endif
