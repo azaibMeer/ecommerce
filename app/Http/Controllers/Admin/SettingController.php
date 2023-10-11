@@ -84,8 +84,51 @@ class SettingController extends Controller
 
         $data['admin'] = User::where('id',$id)->where('user_type',1)->where('status',1)->first();
         if(isset($data['admin']) && Auth::User()->id == $data['admin']->id)
+            return view('admin.profile.view',$data);
+        else
+            return redirect()->back()->with('error','Something went wrong');
+    }
+
+    public function edit_profile($id){
+
+        $data['admin'] = User::where('id',$id)->where('user_type',1)->where('status',1)->first();
+        if(isset($data['admin']) && Auth::User()->id == $data['admin']->id)
             return view('admin.profile.edit',$data);
         else
             return redirect()->back()->with('error','Something went wrong');
+    }
+
+    public function update_profile(Request $request, $id){
+
+        //dd($request->all());
+        $request->validate([ 
+
+        'image' => '|image|mimes:jpeg,png,jpg|dimensions:width=600,height=600'
+       ]);
+
+        $admin = User::find($id);
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->phone = $request->phone;
+        $admin->city = $request->city;
+        $admin->date_of_birth = $request->birth_date;
+        $admin->zip_code = $request->zip_code;
+        $admin->address = $request->address;
+        $admin->status = $request->status;
+        $admin->gender = $request->gender;
+
+        $upload_path = "/front_assets/img/profile/";
+         if($request->hasfile('image')){
+
+            $file = $request->file('image');
+            $imageName = time(). "_".$file->GetClientOriginalName();
+            $filename = $upload_path.$imageName;
+
+            $file->move(public_path($upload_path) , $filename);
+            $admin->profile = $filename; 
+        }
+
+        $admin->save();
+        return redirect()->back()->with('message','Profile update success');
     }
 }

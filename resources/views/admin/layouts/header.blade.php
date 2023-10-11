@@ -62,7 +62,10 @@
                                     </div>
                                     <div class="dropdown-divider m-0"></div>
                                     <a href="{{url('/admin/profile/'.Auth::User()->id)}}" class="dropdown-item">
-                                        <span>Profile</span>
+                                        <span>View profile</span>
+                                    </a>
+                                    <a href="{{url('/edit/profile/'.Auth::User()->id)}}" class="dropdown-item">
+                                        <span>Update profile</span>
                                     </a>
                                     <a href="#" class="dropdown-item" data-toggle="modal" data-target=".js-modal-settings">
                                         <span data-i18n="drpdwn.settings">Settings</span>

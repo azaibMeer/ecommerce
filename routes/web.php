@@ -82,6 +82,8 @@ Route::group(['middleware'=> 'admin'],function(){
      Route::post('/user/update/{id}', [UserController::class, 'user_update_by_admin']);
      Route::get('/user/detail/{id}', [UserController::class, 'view_user']);
      Route::get('/admin/profile/{id}', [SettingController::class, 'admin_profile']);
+     Route::get('/edit/profile/{id}', [SettingController::class, 'edit_profile']);
+     Route::post('/update/profile/{id}', [SettingController::class, 'update_profile']);
     
 
 });
