@@ -10,9 +10,11 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        @if(isset($setting))
         <title>
            {{$setting->website_name}}
         </title>
+        @endif
         <meta name="description" content="Privacy">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">

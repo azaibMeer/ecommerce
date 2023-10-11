@@ -21,7 +21,11 @@
                                           <a href="{{url('/product/detail/'.$featured_product->slug)}}">
                                           <img class="img-fluid" src="{{$featured_product->main_image}}" alt="img">
                                           </a>
-                                          <div class="product-flags discount">{{$featured_product->discount_percentage}}</div>
+                                          {{--
+                                          <div class="product-flags discount">
+                                             {{$featured_product->discount_percentage}}
+                                          </div>
+                                          --}}
                                        </div>
                                        <div class="product-description">
                                           <div class="product-groups">
@@ -48,11 +52,13 @@
                                              </div>
                                           </div>
                                           <div class="product-buttons d-flex justify-content-center">
-                                             <form action="#" method="" class="formAddToCart">
-                                                <input type="hidden" name="token">
-                                                <a class="add-to-cart" href="{{url('/product/addtocart/'.$featured_product->id)}}" data-button-action="add-to-cart">
+                                             <form action="{{url('/product/addtocart/'.$featured_product->id)}}" method="post" class="formAddToCart">
+                                                @csrf
+                                                <input type="hidden" name="quantity" value="1">
+                                                <input type="hidden" name="price" value="{{$featured_product->price - $featured_product->discount}}">
+                                                <button  class="add-to-cart" type="submit">
                                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                </a>
+                                                </button>
                                              </form>
                                              <a class="addToWishlist wishlistProd_1" href="{{url('/user/wishlist/'.$featured_product->id)}}" data-rel="1" onclick="">
                                              <i class="fa fa-heart" aria-hidden="true"></i>

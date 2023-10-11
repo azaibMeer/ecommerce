@@ -1,3 +1,4 @@
+@if(isset($setting))
 <footer class="footer-one">
         <div class="inner-footer">
             <div class="container">
@@ -148,7 +149,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="block m-top1">
+                              {{-- <div class="block m-top1">
                                 <div class="block-content">
                                     <div class="payment-content">
                                         <div class="title-block">
@@ -159,7 +160,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -167,6 +168,7 @@
         </div>
         
     </footer>
+    @endif
 @section('script')
 <script>
 $(document).ready(function(){

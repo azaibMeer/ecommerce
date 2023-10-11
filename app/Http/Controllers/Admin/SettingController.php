@@ -78,4 +78,14 @@ class SettingController extends Controller
         $setting->save();
         return redirect()->back()->with('message','Updated success');
     }
+
+
+    public function admin_profile($id){
+
+        $data['admin'] = User::where('id',$id)->where('user_type',1)->where('status',1)->first();
+        if(isset($data['admin']) && Auth::User()->id == $data['admin']->id)
+            return view('admin.profile.edit',$data);
+        else
+            return redirect()->back()->with('error','Something went wrong');
+    }
 }

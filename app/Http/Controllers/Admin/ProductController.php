@@ -34,20 +34,18 @@ class ProductController extends Controller
         $product->category_id = $request->category_id;
         $product->name = $request->product_name;
         $product->price = $request->price;
-        $product->discount_percentage = $request->discount;
-        $product->discount = $request->discount;
         $product->weight = $request->weight;
         $product->height = $request->height;
         $product->length = $request->length;
         $product->width = $request->width;
         
-        if($request->discount !== null)
+       if(isset($request->discount))
         {
             $discount = $request->discount;
             if(strpos($discount, '%'))
             {
                 $calculated_discount = (trim($discount,'%') * $request->price) / 100;
-                $product->discount = $calculated_discount;
+                $product->discount = $discount;
             }else{
                 $product->discount = $discount;
             }
@@ -77,6 +75,7 @@ class ProductController extends Controller
         $product->product_tag = rtrim($tag , ',');
         $product->meta_title = $request->meta_title;
         $product->meta_tags = $request->meta_tags;
+        $product->meta_description = $request->meta_description;
         
         $upload_path = "/front_assets/img/product/";
         if($request->hasfile('main_image')){

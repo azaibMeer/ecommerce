@@ -81,6 +81,7 @@ Route::group(['middleware'=> 'admin'],function(){
      Route::get('/user/edit/{id}', [UserController::class, 'edit']);
      Route::post('/user/update/{id}', [UserController::class, 'user_update_by_admin']);
      Route::get('/user/detail/{id}', [UserController::class, 'view_user']);
+     Route::get('/admin/profile/{id}', [SettingController::class, 'admin_profile']);
     
 
 });
@@ -110,7 +111,7 @@ Route::group(['middleware'=> 'user'],function(){
    Route::post('/store/password', [UserController::class, 'store_password']); 
    Route::get('/user/wishlist/{id}', [WishlistController::class, 'addToWishlist']);
     Route::get('/wishlist/delete/{id}', [WishlistController::class, 'destroy']);
-//Route::get('/product/addtocart/{id}', [CartController::class, 'addToCart']);
+    Route::get('/product/addtocart/{id}', [CartController::class, 'addToCart']);
     Route::post('/product/addtocart/{id}', [CartController::class, 'addToCart']);
     Route::get('/remove/cart/product/{id}', [CartController::class, 'removeProductFromCart']);
     Route::get('/user/checkout/', [CartController::class, 'checkout']);

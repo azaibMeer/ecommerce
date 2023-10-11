@@ -1,5 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
+<link rel="stylesheet" media="screen, print" href="{{url('/backend_assets/css/formplugins/select2/select2.bundle.css')}}">
 <main id="js-page-content" role="main" class="page-content">
    <div class="subheader">
       <h1 class="subheader-title">
@@ -25,7 +26,7 @@
             </div>
             <div class="panel-container show">
                <div class="panel-content">
-                  <form method="post" action="{{url('/product/add/')}}" 
+                  <form method="post" action="{{url('/product/store/')}}" 
                   	enctype="multipart/form-data">
                   	@csrf
                      <div class="form-row form-group">
@@ -41,12 +42,12 @@
                         <div class="col">
                            <div class="form-group">
                            <label class="form-label" for="single-label">
-                           Parent category
+                          Category
                            </label>
-                           <select class="select2 form-control" id="single-label" name="sub_category">
+                           <select class="select2 form-control" id="single-label" name="category_id">
                               <option value="0" >None</option>
-                              @foreach($categories as $subcategory)
-                              <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                              @foreach($categories as $category)
+                              <option value="{{$category->id}}">{{$category->name}}</option>
                               @endforeach
                            </select>
                         </div>
@@ -55,157 +56,103 @@
                      <div class="form-row form-group">
                         <div class="col">
                            <label class="form-label">
-                           Phone
+                           Price
                            </label>
-                           <input type="number" class="form-control" placeholder="Phone" name="phone"
-                           value="{{$setting->phone}}" >
-                            @error('phone')
-                                 <span class="text-danger">{{$message}}</span>
+                           <input type="number" class="form-control" placeholder="Price" name="price">
+                            @error('price')
+                                 <span class="text-danger">{{$price}}</span>
                            @enderror
                         </div>
                         <div class="col">
                            <label class="form-label">
-                           Mobile
+                           Discount
                            </label>
-                           <input type="number" class="form-control" placeholder="Mobile" name="mobile"
-                           value="{{$setting->mobile}}" >
-                           @error('mobile')
-                                 <span class="text-danger">{{$message}}</span>
+                           <input type="number" class="form-control" placeholder="Discount" name="discount">
+                           @error('discount')
+                                 <span class="text-danger">{{$discount}}</span>
                            @enderror
                         </div>
                         <div class="col">
-                           <label class="form-label">Contact
+                           <label class="form-label">Short description
                            </label>
-                           <input type="number" class="form-control" placeholder="Phone" name="contact" 
-                           value="{{$setting->contact}}">
-                            @error('contact')
-                                 <span class="text-danger">{{$message}}</span>
-                           @enderror
+                           <input type="text" class="form-control" placeholder="Short description" name="short_description">
                         </div>
                      </div>
                      <div class="form-row form-group">
                         <div class="col">
                            <label class="form-label">
-                           Address
+                           Quantity
                            </label>
-                           <input type="text" class="form-control" placeholder="Address" name="address" 
-                           value="{{$setting->address}}">
+                           <input type="number" class="form-control" placeholder="Quantity" name="quantity">
                         </div>
                         <div class="col">
-                           <label class="form-label">Opening Hours
+                           <label class="form-label">Product SKU
                            </label>
-                           <input type="text" class="form-control" placeholder="Opening hours" name="opening_hours" value="{{$setting->opening_hours}}">
-                        </div>
-                     </div>
-                     <div class="form-row form-group">
-                        <div class="col">
-                           <label class="form-label">
-                           Newsletter 
-                           </label>
-                           <input type="text" class="form-control" placeholder="Description" 
-                           name="newsletter_desc" value="{{$setting->newsletter_description}}">
-                        </div>
-                        <div class="col">
-                           <label class="form-label">
-                           Currency
-                           </label>
-                           <input type="text" class="form-control" placeholder="Currency" name="currency" value="{{$setting->currency}}">
-                        </div>
-                        <div class="col">
-                           <label class="form-label">Shipping Charges
-                           </label>
-                           <input type="text" class="form-control" placeholder="Shipping charges" name="shipping_charges" value="{{$setting->shipping_charges}}">
+                           <input type="number" class="form-control" placeholder="SKU" name="product_sku">
                         </div>
                      </div>
                      <div class="form-row form-group">
                         <div class="col">
-                           <label class="form-label">
-                           Facebook Link 
-                           </label>
-                           <input type="text" class="form-control" placeholder="Facebook link" name="facebook_link" value="{{$setting->facebook_link}}">
-                        </div>
-                        <div class="col">
-                           <label class="form-label">
-                           Whatsapp link
-                           </label>
-                           <input type="text" class="form-control" placeholder="Whatsapp link" name="whatsapp_link" value="{{$setting->whatsapp_link}}">
-                        </div>
-                     </div>
-                     <div class="form-row form-group">
-                        <div class="col">
-                           <label class="form-label">
-                           Twitter link
-                           </label>
-                           <input type="text" class="form-control" placeholder="Twitter link" name="twitter_link"
-                            value="{{$setting->twitter_link}}" >
-                        </div>
-                        <div class="col">
-                           <label class="form-label">
-                           Instagram link
-                           </label>
-                           <input type="text" class="form-control" placeholder="Instagram link" name="instagram_link" value="{{$setting->instagram_link}}">
-                        </div>
-                     </div>
-                     <div class="form-row form-group">
-                        <div class="col">
-                           <label class="form-label">
-                           Tiktok link
-                           </label>
-                           <input type="text" class="form-control" placeholder="Tiktok link" name="tiktok_link" value="{{$setting->tiktok_link}}">
-                        </div>
-                        <div class="col">
-                           <label class="form-label">
-                           Developed by
-                           </label>
-                           <input type="text" class="form-control" placeholder="Developed by" value="{{$setting->developed_by}}" readonly>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <label class="form-label" for="example-textarea">Website description
-                        </label>
-                        <textarea class="form-control" rows="2" name="description">{{$setting->description}}
-                        </textarea>
-                     </div>
-                     <div class="form-row form-group">
-                        <div class="col">
-                           <label class="form-label">Website Logo</label>
+                           <label class="form-label">Image</label>
                            <div class="custom-file">
-                              <input type="file" class="custom-file-input" name="logo_path">
+                              <input type="file" class="custom-file-input" name="main_image">
                               <label class="custom-file-label">Choose file</label>
-                              <span class="help-block">
-                                  Image should be 127 by 24 px
-                              </span>
-                              @if(isset($setting->logo_path))
-	                             <div>
-	                              	<img src="{{url($setting->logo_path)}}">
-	                             </div>
-                              @endif
-                              @error('logo_path')
-                              	<span class="text-danger">{{$message}}</span>
-                              @enderror
                            </div>
                         </div>
                         <div class="col">
-                           <label class="form-label">Website Logo (Footer)</label>
-                           <div class="custom-file">
-                              <input type="file" class="custom-file-input" name="footer_logo">
-                              <label class="custom-file-label">Choose file</label>
-                              <span class="help-block">
-                                  Image should be 127 by 24 px
-                              </span>
-                              @if(isset($setting->footer_logo))
-	                              <div>
-	                              	<img src="{{url($setting->footer_logo)}}">
-	                              </div>
-                              @endif
-                              @error('footer_logo')
-                              	<span class="text-danger">{{$message}}</span>
-                              @enderror
-                           </div>
+                           <label class="form-label">Status</label>
+                           <select class="form-control" id="example-select" name="status">
+                              <option value="1">Active</option>
+                              <option value="0">Inactive</option>
+                           </select>   
+                        </div>
+                     </div>
+                     <div class="form-row form-group">
+                        <div class="col">
+                           <label class="form-label">
+                           Weight
+                           </label>
+                           <input type="number" class="form-control" placeholder="Weight" name="weight">
+                           <span>In gram</span>
+                        </div>
+                        <div class="col">
+                           <label class="form-label">
+                           Height
+                           </label>
+                           <input type="number" class="form-control" placeholder="Height" name="height">
+                        </div>
+                        <div class="col">
+                           <label class="form-label">Width
+                           </label>
+                           <input type="number" class="form-control" placeholder="Width" name="width">
+                        </div>
+                        <div class="col">
+                           <label class="form-label">Length
+                           </label>
+                           <input type="number" class="form-control" placeholder="Length" name="length">
+                        </div>
+                     </div>
+                     <div class="form-row form-group">
+                        <div class="col">
+                           <label class="form-label">
+                           Meta Title
+                           </label>
+                           <input type="text" class="form-control" placeholder="Meta Title" name="meta_title">
+                        </div>
+                        <div class="col">
+                           <label class="form-label">
+                          Meta Description
+                           </label>
+                           <input type="text" class="form-control" placeholder="Meta Description" name="meta_description">
+                        </div>
+                        <div class="col">
+                           <label class="form-label">Meta Tags
+                           </label>
+                           <input type="text" class="form-control" placeholder="Meta tags" name="meta_tags">
                         </div>
                      </div>
                      <button type="submit" class="btn btn-primary waves-effect waves-themed">
-                     Update settings</button>
+                     Add Product</button>
                   </form>
                </div>
             </div>

@@ -21,6 +21,7 @@
                                  </div>
                                  <div class="item-right d-flex">
                                     <div class="title">Email:</div>
+                                    @if(isset($setting))
                                     <div class="contact-content">
                                        <a href="#">{{$setting->email}}</a>
                                        <br>
@@ -28,6 +29,7 @@
                                        {{$setting->email}}
                                        </a>
                                     </div>
+                                    @endif
                                  </div>
                               </div>
                            </div>
@@ -40,9 +42,11 @@
                                  </div>
                                  <div class="item-right d-flex">
                                     <div class="title">Address:</div>
+                                    @if(isset($setting))
                                     <div class="contact-content">
                                        {{$setting->address}}
                                     </div>
+                                    @endif
                                  </div>
                               </div>
                            </div>
@@ -55,11 +59,13 @@
                                  </div>
                                  <div class="item-right d-flex">
                                     <div class="title">Contact:</div>
+                                    @if(isset($setting))
                                     <div class="contact-content">
                                        {{$setting->contact}}
                                        <br>{{$setting->phone}}
                                        <br>{{$setting->mobile}}
                                     </div>
+                                    @endif
                                  </div>
                               </div>
                            </div>

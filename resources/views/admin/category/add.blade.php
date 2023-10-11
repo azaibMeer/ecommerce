@@ -9,7 +9,7 @@
    </div>
    @if(session()->has('message'))
    <div class="alert alert-success" role="alert">
-    <strong>Settings</strong> updated success
+   {{session()->get('message')}}
    </div>
    @elseif(session()->has('error'))
    <div class="alert alert-danger" role="alert">

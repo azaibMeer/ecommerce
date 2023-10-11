@@ -42,8 +42,9 @@
                         </div>
                         <div class="ml-auto d-flex">
                             <div>
-                                <a href="#" data-toggle="dropdown" title="drlantern@gotbootstrap.com" class="header-icon d-flex align-items-center justify-content-center ml-2">
-                                    <img src="{{Auth::User()->profile}}" class="profile-image rounded-circle" alt="{{Auth::User()->name}}">
+                                <a href="#" data-toggle="dropdown" class="header-icon d-flex align-items-center justify-content-center ml-2">
+                                    <img src="{{Auth::User()->profile}}" class="profile-image rounded-circle" 
+                                    alt="{{Auth::User()->name}}">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-animated dropdown-lg">
                                     <div class="dropdown-header bg-trans-gradient d-flex flex-row py-4 rounded-top">
@@ -52,14 +53,16 @@
                                                 <img src="{{Auth::User()->profile}}" class="rounded-circle profile-image" alt="{{Auth::User()->name}}">
                                             </span>
                                             <div class="info-card-text">
-                                                <div class="fs-lg text-truncate text-truncate-lg">{{Auth::User()->name}}</div>
-                                                <span class="text-truncate text-truncate-md opacity-80">{{Auth::User()->email}}</span>
+                                                <div class="fs-lg text-truncate text-truncate-lg">
+                                                    {{Auth::User()->name}}</div>
+                                                <span class="text-truncate text-truncate-md opacity-80">
+                                                    {{Auth::User()->email}}</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="dropdown-divider m-0"></div>
-                                    <a href="#" class="dropdown-item" data-action="app-reset">
-                                        <span data-i18n="drpdwn.reset_layout">Reset Layout</span>
+                                    <a href="{{url('/admin/profile/'.Auth::User()->id)}}" class="dropdown-item">
+                                        <span>Profile</span>
                                     </a>
                                     <a href="#" class="dropdown-item" data-toggle="modal" data-target=".js-modal-settings">
                                         <span data-i18n="drpdwn.settings">Settings</span>
@@ -89,7 +92,6 @@
                                     <div class="dropdown-divider m-0"></div>
                                     <a class="dropdown-item fw-500 pt-3 pb-3" href="{{url('/admin/logout')}}">
                                         <span data-i18n="drpdwn.page-logout">Logout</span>
-                                        <span class="float-right fw-n">&commat;{{Auth::User()->name}}</span>
                                     </a>
                                 </div>
                             </div>

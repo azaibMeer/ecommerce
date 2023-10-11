@@ -2,9 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        @if(isset($setting))
         <title>
             Login - - {{$setting->website_name}}
         </title>
+        @endif
         <meta name="description" content="Login">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
@@ -27,8 +29,10 @@
         	
             <div class="page-logo m-0 w-100 align-items-center justify-content-center rounded border-bottom-left-radius-0 border-bottom-right-radius-0 px-4">
                 <a href="javascript:void(0)" class="page-logo-link press-scale-down d-flex align-items-center">
-                    <!-- <img src="{{$setting->logo_path}}" alt="SmartAdmin WebApp" aria-roledescription="logo"> -->
+                   {{-- <img src="{{$setting->logo_path}}" alt="{{$setting->website_name}}"> --}}
+                    @if(isset($setting))
                     <span class="page-logo-text mr-1">Login Into {{$setting->website_name}}</span>
+                    @endif
                     <!-- <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i> -->
                 </a>
             </div>
@@ -48,7 +52,7 @@
                     <div class="form-group">
                         <label class="form-label" for="email">Email</label>
                         <input type="email" id="email" name="email" class="form-control" 
-                        placeholder="your id or email" value="iamadmin@gmail.com">
+                        placeholder="your id or email" value="">
                         @error('email')
                                 <p class="text-danger">{{ $message }}</p>
                         @enderror

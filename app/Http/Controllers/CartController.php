@@ -30,6 +30,9 @@ class CartController extends Controller
         //dd($request->all());
         if(Auth::User()) 
         {
+            if(!($request->quantity == 0)){
+
+
             $product = Product::find($id);
             $product_qty =  $product->quantity;
             $chek_product_in_cart = Checkout::where('product_id',$id)
@@ -67,7 +70,9 @@ class CartController extends Controller
             }
            
         }
-            
+            }else{
+                 return redirect()->back()->with('error','Quantity must be at least one');
+            }
         }
         else {
              return redirect(url('/user/login'))->with('error','Please Login And Then Add Into The Cart');

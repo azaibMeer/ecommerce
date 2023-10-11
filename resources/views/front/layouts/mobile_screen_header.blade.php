@@ -20,9 +20,11 @@
 
                 <!-- logo -->
                 <div class="mobile-logo">
-                    <a href="{{url('/')}}">
-                        <img class="logo-mobile img-fluid" src="{{url($setting->logo_path)}}" alt="Prestashop_Furnitica">
-                    </a>
+                    @if(isset($setting))
+                 <a href="{{url('/')}}">
+                    <img class="logo-mobile img-fluid" src="{{url($setting->logo_path)}}" alt="Prestashop_Furnitica">
+                 </a>
+                 @endif
                 </div>
 
                 <!-- menu right -->

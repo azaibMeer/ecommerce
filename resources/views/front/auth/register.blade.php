@@ -19,9 +19,15 @@
                                         {{ session()->get('error') }}
                                     </div>
                                 @endif
+                                    @if(isset($setting))
                                     <h1 class="text-center title-page">
                                         Create your {{$setting->website_name}} Account
                                     </h1>
+                                    @else
+                                        <h1 class="text-center title-page">
+                                        Create your Account
+                                        </h1>
+                                    @endif
                                     <form action="{{url('/create/user')}}" id="customer-form" 
                                     class="js-customer-form" method="post">
                                     @csrf
@@ -83,9 +89,9 @@
                                         </div>
                                         <div class="clearfix">
                                             <div>
-                                                <button class="btn btn-primary" data-link-action="sign-in" type="submit">
+                                            <button class="btn btn-primary" data-link-action="sign-in" type="submit">
                                                     Create Account
-                                                </button>
+                                            </button>
                                             </div>
                                             <div class="forgot-password">  
                                             <small>Already Member?

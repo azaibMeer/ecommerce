@@ -23,6 +23,7 @@
                   Settings
                </h2>
             </div>
+            @if(isset($setting))
             <div class="panel-container show">
                <div class="panel-content">
                   <form method="post" action="{{url('/update/setting/'.$setting->id)}}" 
@@ -204,6 +205,7 @@
                   </form>
                </div>
             </div>
+            @endif
          </div>
       </div>
    </div>
