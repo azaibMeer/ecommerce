@@ -28,7 +28,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         
-        //dd($request->all());
+        //dd($request->image);
         $product = new Product;
         $product->user_id = Auth::User()->id;
         $product->category_id = $request->category_id;
@@ -59,7 +59,7 @@ class ProductController extends Controller
         $product->long_description = $request->long_description;
 
 
-        $product_tags = $request->product_tag;
+        $product_tags = $request->product_tags;
        
         $product_tags = json_decode($product_tags, true);
         
@@ -76,19 +76,29 @@ class ProductController extends Controller
         $product->meta_title = $request->meta_title;
         $product->meta_tags = $request->meta_tags;
         $product->meta_description = $request->meta_description;
+        $product->save();
         
+        $images = $request->image;
         $upload_path = "/front_assets/img/product/";
-        if($request->hasfile('main_image')){
+        
+        foreach($images as $key => $image){
 
-            $file = $request->file('main_image');
-            $imageName = time(). "_".$file->GetClientOriginalName();
+            $imageName = time(). "_".$image->GetClientOriginalName();
             $filename = $upload_path.$imageName;
 
-            $file->move(public_path($upload_path) , $filename);
-            $product->main_image = $filename; 
-        }
+            if($key <= 0){
+                $product->main_image = $filename;
+                $product->save();
+            }
+            
+            $product_sub_image = new ProductImage;
+            $image->move(public_path($upload_path) , $filename);
+            $product_sub_image->sub_image = $filename;
+            $product_sub_image->product_id = $product->id;
+            $product_sub_image->status = 1;
+            $product_sub_image->save();
 
-        $product->save();
+        }
         $product_id = $product->id;
         $product->slug = Str::slug($request->product_name . '-' . $product_id);
         $product->save();
@@ -139,7 +149,8 @@ class ProductController extends Controller
        $data['setting'] = Setting::first();
        $data['product'] = Product::where('slug',$slug)->first();
        $product_id = $data['product']['id']; 
-       $data['product_images'] = ProductImage::where('product_id',$product_id)->where('status',1)->take(5)->get();
+       $data['product_images'] = ProductImage::where('product_id',$product_id)
+       ->where('status', 1)->take(4)->get();
        return view('front.layouts.product_detail',$data);
     }
 }

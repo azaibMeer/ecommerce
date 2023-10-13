@@ -95,7 +95,7 @@
                         <div class="col">
                            <label class="form-label">Image</label>
                            <div class="custom-file">
-                              <input type="file" class="custom-file-input" name="main_image">
+                              <input type="file" class="custom-file-input" name="image[]" multiple>
                               <label class="custom-file-label">Choose file</label>
                            </div>
                         </div>
@@ -113,7 +113,6 @@
                            Weight
                            </label>
                            <input type="number" class="form-control" placeholder="Weight" name="weight">
-                           <span>In gram</span>
                         </div>
                         <div class="col">
                            <label class="form-label">
