@@ -1,7 +1,7 @@
 <aside class="page-sidebar">
                     <div class="page-logo">
                         <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative" data-toggle="modal" data-target="#modal-shortcut">
-                            @if(isset($setting))
+                            @if(isset($setting->logo_path))
                             <img src="{{url($setting->logo_path)}}" alt="{{$setting->website_name}}">
                             <span class="page-logo-text mr-1">{{$setting->website_name}}</span>
                             @endif

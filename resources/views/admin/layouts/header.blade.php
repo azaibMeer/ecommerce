@@ -62,23 +62,17 @@
                                     </div>
                                     <div class="dropdown-divider m-0"></div>
                                     <a href="{{url('/admin/profile/'.Auth::User()->id)}}" class="dropdown-item">
-                                        <span>View profile</span>
+                                        <span>Your Profile</span>
                                     </a>
                                     <a href="{{url('/edit/profile/'.Auth::User()->id)}}" class="dropdown-item">
-                                        <span>Update profile</span>
+                                        <span>Edit Profile</span>
                                     </a>
-                                    <a href="#" class="dropdown-item" data-toggle="modal" data-target=".js-modal-settings">
-                                        <span data-i18n="drpdwn.settings">Settings</span>
+                                    <a href="{{url('/change/admin/password/')}}" class="dropdown-item">
+                                        <span>Change Password</span>
                                     </a>
+                                    
                                     <div class="dropdown-divider m-0"></div>
-                                    <a href="#" class="dropdown-item" data-action="app-fullscreen">
-                                        <span data-i18n="drpdwn.fullscreen">Fullscreen</span>
-                                        <i class="float-right text-muted fw-n">F11</i>
-                                    </a>
-                                    <a href="#" class="dropdown-item" data-action="app-print">
-                                        <span data-i18n="drpdwn.print">Print</span>
-                                        <i class="float-right text-muted fw-n">Ctrl + P</i>
-                                    </a>
+                                    
                                     <!-- <div class="dropdown-multilevel dropdown-multilevel-left">
                                         <div class="dropdown-item">
                                             Language

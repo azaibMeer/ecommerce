@@ -131,4 +131,10 @@ class SettingController extends Controller
         $admin->save();
         return redirect()->back()->with('message','Profile update success');
     }
+
+     public function change_admin_password()
+    {
+        
+        return view('admin.profile.change_password');
+    }
 }

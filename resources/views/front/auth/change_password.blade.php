@@ -29,15 +29,13 @@
                                         </div>
                                         <div class="form-group center-email-fields">
                                         <div class="email">
-                                                <input type="password" name="confirm_password" id="password" value="" class="form-control" placeholder="New Password">
+                                                <input type="password" name="new_password" id="password" value="" class="form-control" placeholder="New Password">
                                         </div>
                                     </div>
                                         <div class="form-group center-email-fields">
                                             <div class="email">
-                                                <input type="password" name="new_password" id="password" value="" class="form-control" placeholder="New Password">
+                                                <input type="password" name="confirm_password" id="password" value="" class="form-control" placeholder="Confirm password">
                                             </div>
-                                            
-
                                             <div>
                                                 <button class="form-control-submit btn btn-primary" name="submit" type="submit">
                                                     Change Password

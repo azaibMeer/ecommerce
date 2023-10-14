@@ -141,8 +141,8 @@ class UserController extends Controller
 
     public function change_password()
     {
-        $data['setting'] = Setting::first();
-        return view('front.auth.change_password',$data);
+        
+        return view('front.auth.change_password');
     }
 
     public function store_password(Request $request)

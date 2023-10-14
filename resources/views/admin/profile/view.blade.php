@@ -15,7 +15,7 @@
                                     <div class="row no-gutters row-grid">
                                         <div class="col-12">
                                             <div class="d-flex flex-column align-items-center justify-content-center p-4">
-                                                <img src="{{url($admin->profile)}}" class="rounded-circle shadow-2 img-thumbnail" alt="" width="300px">
+                                                <img src="{{url($admin->profile)}}" class="rounded-circle shadow-2 img-thumbnail" alt="" width="150px">
                                                 <h5 class="mb-0 fw-700 text-center mt-3">
                                                     {{$admin->name}}
                                                     <small class="text-muted mb-0">{{$admin->city}}</small>

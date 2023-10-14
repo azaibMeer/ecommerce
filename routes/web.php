@@ -84,6 +84,7 @@ Route::group(['middleware'=> 'admin'],function(){
      Route::get('/admin/profile/{id}', [SettingController::class, 'admin_profile']);
      Route::get('/edit/profile/{id}', [SettingController::class, 'edit_profile']);
      Route::post('/update/profile/{id}', [SettingController::class, 'update_profile']);
+     Route::get('/change/admin/password/', [SettingController::class, 'change_admin_password']);
     
 
 });
