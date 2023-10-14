@@ -20,7 +20,7 @@
                      enctype="multipart/form-data">
                      @csrf
                      <div class="form-row form-group">
-                        <div class="col">
+                        <div class="col-md-6">
                            <label class="form-label">
                               Name
                            </label>
@@ -29,7 +29,7 @@
                                  <span class="text-danger">{{$message}}</span>
                            @enderror
                         </div>
-                        <div class="col">
+                        <div class="col-md-6">
                            <label class="form-label">Link</label>
                            <input type="text" class="form-control" placeholder="Slider link" name="slider_link">
                            @error('slider_link')
@@ -44,7 +44,7 @@
                         </textarea>
                      </div>
                      <div class="form-row form-group">
-                        <div class="col">
+                        <div class="col-md-6">
                            <label class="form-label">Image</label>
                            <div class="custom-file">
                               <input type="file" class="custom-file-input" name="image">
@@ -58,7 +58,7 @@
                               @enderror
                            </div>
                         </div>
-                        <div class="col">
+                        <div class="col-md-6">
                            <label class="form-label">Status</label>
                            <select class="form-control" id="example-select" name="status">
                               <option value="1">Active</option>
