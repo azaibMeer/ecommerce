@@ -69,6 +69,13 @@
                                     <span class="nav-link-text">Users</span>
                                 </a>
                             </li>
+                            <li class="{{ (request()->is('blog/*') || request()->is('blogs/*')) 
+                                ? 'active open' : '' }}">
+                                <a href="{{url('/blog/list/')}}" title="Blogs">
+                                    <i class="fal fa-blog"></i>
+                                    <span class="nav-link-text">Blogs</span>
+                                </a>
+                            </li>
                             <li class="{{ (request()->is('website/setting')) ? 'active open' : '' }}">
                                 <a href="{{url('/website/setting')}}" title="Website settings">
                                     <i class="fal fa-cog"></i>

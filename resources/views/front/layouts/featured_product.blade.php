@@ -1,7 +1,5 @@
 @if(count($featured_products) > 0)
-<div id="main">
-   <section class="page-home">
-      <div class="section living-room background-none">
+<div class="section living-room background-none">
          <div class="container">
             <div class="tiva-row-wrap row">
                <div class="col-md-12 col-xs-12 groupcategoriestab-vertical">
@@ -80,6 +78,4 @@
             </div>
          </div>
       </div>
-   </section>
-</div>
 @endif

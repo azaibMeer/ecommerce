@@ -25135,3 +25135,8 @@ footer [class~=title-block],
 	float: left;
 }
 
+.set-blog-img{
+	height: 208px;
+    object-fit: cover;
+    width: 100%;
+}

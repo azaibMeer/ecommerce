@@ -7,6 +7,7 @@ use App\Models\Subscribe;
 use App\Models\Slider;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Blog;
 
 class IndexController extends Controller
 {
@@ -19,6 +20,7 @@ class IndexController extends Controller
         ->where('status','1')->take(10)->get();
         $data['sliders'] = Slider::where('status', 1)->take(3)->orderBy('id','desc')->get();
         $data['featured_products'] = Product::where('status',1)->get();
+        $data['blogs'] = Blog::where('status',1)->orderBy('id','desc')->take(3)->get();
         return view('front.layouts.index',$data);
     }
 

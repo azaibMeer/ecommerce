@@ -14,6 +14,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\BlogController;
 
 
 
@@ -40,6 +41,7 @@ Route::post('/subscribe', [IndexController::class, 'subscribe']);
 Route::get('/contact', [ContactUsController::class, 'index']); 
 Route::post('/store/contact', [ContactUsController::class, 'store']);
 Route::get('/product/detail/{slug}', [ProductController::class, 'detail']);
+
 
 
 
@@ -86,7 +88,9 @@ Route::group(['middleware'=> 'admin'],function(){
      Route::post('/update/profile/{id}', [SettingController::class, 'update_profile']);
      Route::get('/change/admin/password/', [SettingController::class, 'change_admin_password']);
     
-
+     Route::get('/blog/list', [BlogController::class, 'show']);
+     Route::get('/blog/add', [BlogController::class, 'index']);
+     Route::post('/blog/store', [BlogController::class, 'store']);
 });
 
 Route::get('/admin/logout', function(Request $request){
@@ -136,3 +140,4 @@ Route::get('/user/logout', function(Request $request){
 });
 
 Route::get('/category/{slug}', [CategoryController::class, 'category_product']);
+Route::get('/blog/{slug}', [BlogController::class, 'detail']);
