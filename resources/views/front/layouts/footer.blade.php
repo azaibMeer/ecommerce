@@ -1,4 +1,3 @@
-@if(isset($setting))
 <footer class="footer-one">
         <div class="inner-footer">
             <div class="container">
@@ -166,9 +165,7 @@
                 </div>
             </div>
         </div>
-        
     </footer>
-    @endif
 @section('script')
 <script>
 $(document).ready(function(){

@@ -1,11 +1,9 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        @if(isset($setting))
         <title>
             {{$setting->website_name}}
         </title>
-        @endif
         <meta name="description" content="Login">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
@@ -26,14 +24,12 @@
             <div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
                <div class="row">
                   <div class="col col-md-6 col-lg-7 hidden-sm-down">
-                    @if(isset($setting))
                      <h2 class="fs-xxl fw-500 mt-4 text-white">
                         {{$setting->website_name}}
                         <small class="h5 fw-300 mt-3 mb-5 text-white opacity-60">
                        {{$setting->description}}
                         </small>
                      </h2>
-                     @endif
                   </div>
                   <div class="col-sm-12 col-md-6 col-lg-5 col-xl-4 ml-auto">
                      <h1 class="text-white fw-300 mb-3 d-sm-block d-md-none">
@@ -87,7 +83,7 @@
                @php
                   use Carbon\Carbon;
                @endphp
-               @if(isset($setting))
+               @if(isset($setting->developed_by))
                <div class="position-absolute pos-bottom pos-left pos-right p-3 text-center text-white">
                   © {{Carbon::now()->format('Y')}} 
                   <a href="{{url('http://www.technidersolutions.com/')}}" 

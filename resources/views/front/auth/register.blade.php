@@ -19,15 +19,10 @@
                                         {{ session()->get('error') }}
                                     </div>
                                 @endif
-                                    @if(isset($setting))
+                                    
                                     <h1 class="text-center title-page">
                                         Create your {{$setting->website_name}} Account
                                     </h1>
-                                    @else
-                                        <h1 class="text-center title-page">
-                                        Create your Account
-                                        </h1>
-                                    @endif
                                     <form action="{{url('/create/user')}}" id="customer-form" 
                                     class="js-customer-form" method="post">
                                     @csrf
