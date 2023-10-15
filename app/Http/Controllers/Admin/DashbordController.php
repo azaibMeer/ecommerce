@@ -18,17 +18,17 @@ class DashbordController extends Controller
     public function index()
     {   
 
-       $data['setting'] = Setting::first();
-       $data['users'] = DB::select('SELECT  COUNT(id) as total_users FROM users WHERE user_type = 2');
-       $data['orders'] = DB::select('SELECT  COUNT(id) as total_orders FROM orders');
-         $data['new_orders'] = DB::select('SELECT  COUNT(id) as new_orders FROM orders where status = 1');
        
-       $data['total_month_sales'] = DB::select('SELECT SUM(total_price) as total_order_price 
+       $users = DB::select('SELECT  COUNT(id) as total_users FROM users WHERE user_type = 2');
+       $orders = DB::select('SELECT  COUNT(id) as total_orders FROM orders');
+       $new_orders = DB::select('SELECT  COUNT(id) as new_orders FROM orders where status = 1');
+       
+       $total_month_sales = DB::select('SELECT SUM(total_price) as total_order_price 
         FROM orders
         WHERE MONTH(created_at) = MONTH(CURRENT_DATE())
         AND YEAR(created_at) = YEAR(CURRENT_DATE())'); 
         
-        $data['top_products_sale'] =  DB::select('SELECT name,main_image, SUM(order_detail.qty)
+        $top_products_sale =  DB::select('SELECT name,main_image, SUM(order_detail.qty)
                             AS total_product_sales FROM products 
                             INNER JOIN order_detail 
                             ON products.id = order_detail.product_id
@@ -36,7 +36,7 @@ class DashbordController extends Controller
                             ORDER BY total_product_sales DESC
                             LIMIT 3');
     
-        $data['top_purchsed_customers'] =  DB::select('SELECT name,profile, COUNT(order_detail.user_id) 
+        $top_purchsed_customers =  DB::select('SELECT name,profile, COUNT(order_detail.user_id) 
                             AS top_purchasing_user FROM order_detail 
                             INNER JOIN users 
                             ON users.id = order_detail.user_id
@@ -60,7 +60,7 @@ class DashbordController extends Controller
         
 
 
-        return view('admin.layouts.dashboard',$data);   
+        return view('admin.layouts.dashboard',compact('users','orders','new_orders','total_month_sales'));   
 
     }
     /**

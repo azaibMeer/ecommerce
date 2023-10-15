@@ -2,7 +2,8 @@
                     <div class="page-logo">
                         <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative" data-toggle="modal" data-target="#modal-shortcut">
                             @if(isset($setting->logo_path))
-                            <img src="{{url($setting->logo_path)}}" alt="{{$setting->website_name}}">
+                            <img src="{{url($setting->logo_path)}}" alt="{{$setting->website_name}}" 
+                            style="width: 28px;height: 28px;object-fit: contain;">
                             <span class="page-logo-text mr-1">{{$setting->website_name}}</span>
                             @endif
                             <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
@@ -11,14 +12,6 @@
                     </div>
                     <!-- BEGIN PRIMARY NAVIGATION -->
                     <nav id="js-primary-nav" class="primary-nav" role="navigation">
-                        <div class="nav-filter">
-                            <div class="position-relative">
-                                <input type="text" id="nav_filter_input" placeholder="Filter menu" class="form-control" tabindex="0">
-                                <a href="#" onclick="return false;" class="btn-primary btn-search-close js-waves-off" data-action="toggle" data-class="list-filter-active" data-target=".page-sidebar">
-                                    <i class="fal fa-chevron-up"></i>
-                                </a>
-                            </div>
-                        </div>
                         <div class="info-card">
                             <img src="{{Auth::User()->profile}}" class="profile-image rounded-circle" 
                             alt="{{Auth::User()->name}}">
@@ -32,10 +25,7 @@
                                     {{ucfirst(Auth::User()->city)}}  
                                 </span>
                             </div>
-                            <img src="/backend_assets/img/card-backgrounds/cover-2-lg.png" class="cover" alt="cover">
-                            <a href="#" onclick="return false;" class="pull-trigger-btn" data-action="toggle" data-class="list-filter-active" data-target=".page-sidebar" data-focus="nav_filter_input">
-                                <i class="fal fa-angle-down"></i>
-                            </a>
+                            <img src="{{url('/backend_assets/img/card-backgrounds/cover-2-lg.png')}}" class="cover" alt="cover">
                         </div>
                         <ul id="js-nav-menu" class="nav-menu">
                             <li class="{{ (request()->is('admin/dashboard')) ? 'active open' : '' }}">

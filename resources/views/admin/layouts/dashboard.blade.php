@@ -2,31 +2,75 @@
 @section('content')
 <main id="js-page-content" role="main" class="page-content">
                         <ol class="breadcrumb page-breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">SmartAdmin</a></li>
-                            <li class="breadcrumb-item">Application Intel</li>
-                            <li class="breadcrumb-item active">Privacy</li>
                             <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
                         </ol>
                         <div class="subheader">
                             <h1 class="subheader-title">
-                                <i class='fal fa-info-circle'></i> Privacy
-                                <small>
-                                    SmartAdmin Privacy
-                                </small>
+                                <i class='subheader-icon fal fa-tachometer'></i> Dashboard
                             </h1>
                         </div>
-                        <div class="fs-lg fw-300 p-5 bg-white border-faded rounded mb-g">
-                            <h2>Privacy</h2>
-                            <p class="mb-g">
-                                Your privacy is important to us at SmartAdmin and the protection, confidentiality and integrity of your personal data are our prime concerns.
-                                We will only use your personal information to administer your account, provide the products and services you have requested from us, and to keep you informed about our products and services (if you have consented to this).
-                                We only use your data for the purposes for which it was collected and, where relevant, to meet local legal obligations.
-                                We will retain your personal information only for as long as is necessary for the purposes for which the information was collected, or as long as is required pursuant to law.
-                            </p>
-                            <h3>Cookies and other similar technologies</h3>
-                            <p>
-                                We collect certain data through cookies and similar technologies (e.g. web beacons, tags, device identifiers). Cookies are text files placed on your computer to collect standard internet log information and visitor behaviour information. This information is used to track visitor use of the website and to compile statistical reports on website activity. We register your interaction with our services in order to improve our website, content and services. Our use of such technologies and the data collected is described in more detail in our Cookie Policy. You can manage your cookie preferences through your browser settings.
-                            </p>
+                        <div class="row">
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="p-3 bg-primary-300 rounded overflow-hidden position-relative text-white mb-g">
+                                    <div class="">
+                                        <h3 class="display-4 d-block l-h-n m-0 fw-500">
+                                             @if(isset($users))
+                                                {{$users[0]->total_users}}
+                                             @else
+                                                0
+                                           @endif
+                                            <small class="m-0 l-h-n">users signed up</small>
+                                        </h3>
+                                    </div>
+                                    <i class="fal fa-user position-absolute pos-right pos-bottom opacity-15 mb-n1 mr-n1" style="font-size:6rem"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="p-3 bg-warning-400 rounded overflow-hidden position-relative text-white mb-g">
+                                    <div class="">
+                                        <h3 class="display-4 d-block l-h-n m-0 fw-500">
+                                            @if(isset($orders))
+                                            {{$orders[0]->total_orders}}
+                                            @else
+                                            0
+                                           @endif
+                                            <small class="m-0 l-h-n">Total Orders</small>
+                                        </h3>
+                                    </div>
+                                    <i class="fal fa-gem position-absolute pos-right pos-bottom opacity-15  mb-n1 mr-n4" style="font-size: 6rem;"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="p-3 bg-success-200 rounded overflow-hidden position-relative text-white mb-g">
+                                    <div class="">
+                                        <h3 class="display-4 d-block l-h-n m-0 fw-500">
+                                            @if(isset($new_orders))
+                                            {{$new_orders[0]->new_orders}}
+                                           @else
+                                            0
+                                           @endif
+                                            <small class="m-0 l-h-n">New Orders</small>
+                                        </h3>
+                                    </div>
+                                    <i class="fal fa-lightbulb position-absolute pos-right pos-bottom opacity-15 mb-n5 mr-n6" style="font-size: 8rem;"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="p-3 bg-info-200 rounded overflow-hidden position-relative text-white mb-g">
+                                    <div class="">
+                                        <h3 class="display-4 d-block l-h-n m-0 fw-500">
+                                             @if(isset($total_month_sales))
+                                            {{$setting->currency}} {{$total_month_sales[0]->total_order_price}}
+                                            @else
+                                            0
+                                            @endif
+                                            <small class="m-0 l-h-n">Monthly Sales</small>
+                                        </h3>
+                                    </div>
+                                    <i class="fal fa-globe position-absolute pos-right pos-bottom opacity-15 mb-n1 mr-n4" style="font-size: 6rem;"></i>
+                                </div>
+                            </div>
                         </div>
+                        
                     </main>
 @endsection

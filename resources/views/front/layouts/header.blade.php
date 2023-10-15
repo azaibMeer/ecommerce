@@ -16,11 +16,9 @@
                     <!-- logo -->
                     <div class="col-sm-2 col-md-2 d-flex align-items-center">
                         <div id="logo">
-                            @if(isset($setting))
                             <a href="{{url('/')}}">
                                 <img class="img-fluid" src="{{url($setting->logo_path)}}" alt="logo">
-                            </a>
-                            @endif
+                            </a>                           
                         </div>
                     </div>
 
