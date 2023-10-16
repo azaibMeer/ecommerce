@@ -16,7 +16,6 @@ class SettingController extends Controller
      */
     public function index()
     {   
-        $data['setting'] = Setting::first();
        return view('admin.setting.setting',$data);   
     }
     

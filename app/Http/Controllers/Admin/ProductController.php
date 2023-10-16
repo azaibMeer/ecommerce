@@ -20,7 +20,6 @@ class ProductController extends Controller
      */
     public function index()
     {       
-            $data['setting'] = Setting::first();
             $data['categories'] = Category::where('status',1)->get();
             return view('admin.product.add',$data);
     }
@@ -146,7 +145,6 @@ class ProductController extends Controller
     public function detail($slug)
     {   
 
-       $data['setting'] = Setting::first();
        $data['product'] = Product::where('slug',$slug)->first();
        $product_id = $data['product']['id']; 
        $data['product_images'] = ProductImage::where('product_id',$product_id)

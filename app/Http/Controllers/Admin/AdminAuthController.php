@@ -21,7 +21,6 @@ class AdminAuthController extends Controller
 
     public function login()
     {   
-        $data['setting'] = Setting::first();
         return view('admin.auth.login',$data);
     }
 

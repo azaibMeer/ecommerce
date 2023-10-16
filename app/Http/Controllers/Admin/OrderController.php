@@ -41,8 +41,7 @@ class OrderController extends Controller
      */
     public function show()
     {
-        $data['setting'] = Setting::first();
-       $data['orders'] = Order::get();
+        $data['orders'] = Order::get();
         return view('admin.orders.list',$data);
     }
 

@@ -19,7 +19,6 @@ class CategoryController extends Controller
      */
     public function index()
     {       
-            $data['setting'] = Setting::first();
             $data['categories'] = Category::where('status',1)->get();
             return view('admin.category.add',$data);
     }
@@ -89,7 +88,6 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {   
-       $data['setting'] = Setting::first();
        $data['categories'] = Category::where('status',1)->get();
        $data['category'] = Category::where('id',$id)->first();
        return view('admin.category.edit',$data);

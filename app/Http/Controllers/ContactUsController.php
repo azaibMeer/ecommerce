@@ -12,7 +12,7 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-       $data['setting'] = Setting::first();
+       
        return view('front.layouts.contact',$data);
     }
 

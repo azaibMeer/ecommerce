@@ -14,13 +14,11 @@ class UserController extends Controller
      */
     public function login()
     {   
-        $data['setting'] = Setting::first();
         return view('front.auth.login',$data);
     }
 
     public function register()
     {   
-        $data['setting'] = Setting::first();
         return view('front.auth.register',$data);
     }
 
@@ -31,7 +29,6 @@ class UserController extends Controller
     {   
         $data['user'] = Auth::User();
         //dd($user);
-        $data['setting'] = Setting::first();
         return view('front.user.account',$data);
     }
 
@@ -77,7 +74,6 @@ class UserController extends Controller
     public function show()
     {
         $data['users'] = User::where('user_type',2)->orderBy('id','desc')->get();
-        $data['setting'] = Setting::first();
         return view('admin.user.list',$data);
     }
 

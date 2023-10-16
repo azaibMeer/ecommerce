@@ -17,7 +17,7 @@ class CartController extends Controller
     
     public function viewcart()
     {
-        $data['setting'] = Setting::first();
+        
         $data['items'] = Checkout::Join('products','products.id','checkout.product_id')
                 ->select('products.name','products.slug','products.main_image','checkout.*')
                 ->where('checkout.user_id',Auth::User()->id)->get();
@@ -92,7 +92,7 @@ class CartController extends Controller
 
     public function checkout(){
 
-            $data['setting'] = Setting::first();
+            
             $data['items'] = Checkout::Join('products','products.id','checkout.product_id')
                 ->select('products.name','products.slug','products.main_image','checkout.*')
                 ->where('checkout.user_id',Auth::User()->id)->get();
@@ -104,7 +104,7 @@ class CartController extends Controller
     public function place_order(Request $request){
         //dd($request->all());
 
-        $setting = Setting::first();
+        
         $user_id = Auth::User()->id;
         $checkout_products = Checkout::join('products','products.id','checkout.product_id')
         ->select('products.name as product_name', 'checkout.*')
@@ -166,7 +166,6 @@ class CartController extends Controller
     public function order_complete($order_no){
 
         $data['order_no'] = $order_no;
-        $data['setting'] = Setting::first();
         return view('front.layouts.order_complete',$data);
     }
 }

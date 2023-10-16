@@ -66,7 +66,7 @@ class SliderController extends Controller
      */
     public function show()
     {
-        $data['setting'] = Setting::first();
+        
         $data['sliders'] = Slider::orderBy('id','desc')->get();
         return view('admin.slider.list',$data);
     }
@@ -76,7 +76,7 @@ class SliderController extends Controller
      */
     public function edit(string $id)
     {   
-        $data['setting'] = Setting::first();
+        
         $data['slider'] = Slider::where('id',$id)->first();
         return view('admin.slider.edit',$data);
     }
