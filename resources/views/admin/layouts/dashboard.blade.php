@@ -1,11 +1,5 @@
 @extends('admin.layouts.master')
 @section('content')
-
-@php
-    use App\Models\Moq;
-    $moqArray = Moq::where('product_id',22)->get();
-
-@endphp
 <main id="js-page-content" role="main" class="page-content">
                         <ol class="breadcrumb page-breadcrumb">
                             <li class="position-absolute pos-top pos-right d-none d-sm-block"><span class="js-get-date"></span></li>
@@ -14,8 +8,6 @@
                             <h1 class="subheader-title">
                                 <i class='subheader-icon fal fa-tachometer'></i> Dashboard
                             </h1>
-                            <input type="text" value="1" id="get_qty">
-                            <button onclick="test()">+</button>
                         </div>
                         <div class="row">
                             <div class="col-sm-6 col-xl-3">

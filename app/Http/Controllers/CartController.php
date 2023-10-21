@@ -104,7 +104,7 @@ class CartController extends Controller
     public function place_order(Request $request){
         //dd($request->all());
 
-        
+        $setting = Setting::where('status',1)->first();
         $user_id = Auth::User()->id;
         $checkout_products = Checkout::join('products','products.id','checkout.product_id')
         ->select('products.name as product_name', 'checkout.*')

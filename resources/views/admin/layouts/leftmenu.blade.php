@@ -1,4 +1,4 @@
-<aside class="page-sidebar">
+                    <aside class="page-sidebar">
                     <div class="page-logo">
                         <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative" data-toggle="modal" data-target="#modal-shortcut">
                             @if(isset($setting->logo_path))
@@ -57,6 +57,13 @@
                                 <a href="{{url('/users/list/')}}" title="Users">
                                     <i class="fal fa-user"></i>
                                     <span class="nav-link-text">Users</span>
+                                </a>
+                            </li>
+                            <li class="{{ (request()->is('order/*') || request()->is('orders/*')) 
+                                ? 'active open' : '' }}">
+                                <a href="{{url('/order/list/')}}" title="Order">
+                                    <i class="fal fa-shopping-cart"></i>
+                                    <span class="nav-link-text">Orders</span>
                                 </a>
                             </li>
                             <li class="{{ (request()->is('blog/*') || request()->is('blogs/*')) 

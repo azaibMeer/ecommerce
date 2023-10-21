@@ -42,7 +42,7 @@ class OrderController extends Controller
     public function show()
     {
         $data['orders'] = Order::get();
-        return view('admin.orders.list',$data);
+        return view('admin.order.list',$data);
     }
 
     /**
@@ -69,5 +69,9 @@ class OrderController extends Controller
         
     }
 
+    public function user_order()
+    {
+        //dd("dd");
+    }
 
 }

@@ -23,27 +23,11 @@
          <div class="flex-1">
             <div class="container py-4 py-lg-5 my-lg-5 px-4 px-sm-0">
                <div class="row">
-                  <div class="col col-md-6 col-lg-7 hidden-sm-down">
-                     <h2 class="fs-xxl fw-500 mt-4 text-white">
-                        {{$setting->website_name}}
-                        <small class="h5 fw-300 mt-3 mb-5 text-white opacity-60">
-                       {{$setting->description}}
-                        </small>
-                     </h2>
-                  </div>
                   <div class="col-sm-12 col-md-6 col-lg-5 col-xl-4 ml-auto">
-                     <h1 class="text-white fw-300 mb-3 d-sm-block d-md-none">
-                        Secure login
+                     <h1 class="text-white fw-300 mb-3 d-sm-block">
+                        Admin login
                      </h1>
-                        @if(session()->has('message'))
-                         <div class="alert alert-primary">
-                          {{ session()->get('message') }}
-                        </div>
-                      @elseif(session()->has('error'))
-                         <div class="alert alert-primary">
-                              {{ session()->get('error') }}
-                         </div>
-                      @endif
+                     @include('error.error')
                      <div class="card p-4 rounded-plus bg-faded">
                         <form action="{{url('/authenticate')}}" method="post" id="login">
                            @csrf
@@ -62,18 +46,18 @@
                               <p class="text-danger">{{ $message }}</p>
                               @enderror    
                            </div>
-                           <div class="form-group text-left">
+                           {{-- <div class="form-group text-left">
                               <div class="custom-control custom-checkbox">
                                  <input type="checkbox" class="custom-control-input" id="rememberme">
                                  <label class="custom-control-label" for="rememberme"> Remember me for the next 30 days</label>
                               </div>
-                           </div>
+                           </div> --}}
                            <div class="row no-gutters">
                               {{--<div class="col-lg-6 pr-lg-1 my-2">
                                  <button type="submit" class="btn btn-info btn-block btn-lg">Sign in with <i class="fab fa-google"></i></button>
                               </div>--}}
                               <div class="col-lg-6 pl-lg-1 my-2">
-                                 <button id="js-login-btn" type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
+                                 <button id="js-login-btn" type="submit" class="btn btn-primary">Login</button>
                               </div>
                            </div>
                         </form>

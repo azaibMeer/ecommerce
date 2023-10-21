@@ -14,12 +14,12 @@ class UserController extends Controller
      */
     public function login()
     {   
-        return view('front.auth.login',$data);
+        return view('front.auth.login');
     }
 
     public function register()
     {   
-        return view('front.auth.register',$data);
+        return view('front.auth.register');
     }
 
     /**

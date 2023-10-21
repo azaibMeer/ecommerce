@@ -63,15 +63,21 @@
                             <div id="acount" class="collapse">
                                 <div class="account-list-content">
                                     <div>
-                                        <a class="login" href="{{url('/user/account')}}" rel="nofollow" title="Log in to your customer account">
+                                        <a class="login" href="{{url('/user/account')}}">
                                             <i class="fa fa-cog"></i>
                                             <span>My Account</span>
                                         </a>
                                     </div>
                                     <div>
-                                        <a class="login" href="{{url('/user/profile')}}" rel="nofollow" title="Log in to your customer account">
-                                            <i class="fa fa-cog"></i>
+                                        <a class="login" href="{{url('/user/profile')}}">
+                                            <i class="fa fa-user"></i>
                                             <span>Manage Profile</span>
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <a class="login" href="{{url('/change/password/')}}">
+                                            <i class="fa fa-lock"></i>
+                                            <span>Change Passsword</span>
                                         </a>
                                     </div>
                                     <div>

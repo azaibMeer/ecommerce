@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
@@ -91,6 +92,8 @@ Route::group(['middleware'=> 'admin'],function(){
      Route::get('/blog/list', [BlogController::class, 'show']);
      Route::get('/blog/add', [BlogController::class, 'index']);
      Route::post('/blog/store', [BlogController::class, 'store']);
+
+     Route::get('/order/list/', [OrderController::class, 'show']);
 });
 
 Route::get('/admin/logout', function(Request $request){
@@ -124,6 +127,8 @@ Route::group(['middleware'=> 'user'],function(){
     Route::get('/user/checkout/', [CartController::class, 'checkout']);
     Route::post('/place/order', [CartController::class, 'place_order']);
     Route::get('/order_complete/{order_no}', [CartController::class, 'order_complete']);
+    Route::get('/user/order', [OrderController::class, 'user_order']);
+
 
 });
 

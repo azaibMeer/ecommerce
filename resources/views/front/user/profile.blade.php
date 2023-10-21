@@ -58,7 +58,7 @@
                                        value="{{$user->email}}" readonly>
                                  </div>
                               </div>
-                              <div class="row form-group">
+                              <div class="form-row form-group">
                                  <div class="col">
                                     <input type="text" class="form-control" name="phone" type="number" placeholder="Phone" 
                                        value="{{$user->phone}}">
@@ -83,8 +83,7 @@
                                  </div>
                                  <div class="forgot-password">  
                                     <small>
-                                    <a href="{{url('/change/password')}}"
-                                       rel="nofollow">
+                                    <a href="{{url('/change/password')}}">
                                     Change your Password </a>
                                     </small>
                                  </div>

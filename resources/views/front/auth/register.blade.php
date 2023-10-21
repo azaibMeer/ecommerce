@@ -54,7 +54,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <div class="row form-group">
+                                            <div class="form-row form-group">
                                                 <div class="col">
                                                   <label class="label-register">Phone</label>
                                                   <input type="text" class="form-control" name="phone" type="number" placeholder="Phone">

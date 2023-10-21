@@ -12,7 +12,7 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-       
+       $data['setting'] = Setting::where('status',1)->first();
        return view('front.layouts.contact',$data);
     }
 

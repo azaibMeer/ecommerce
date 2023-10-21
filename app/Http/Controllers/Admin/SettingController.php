@@ -15,8 +15,9 @@ class SettingController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {   
-       return view('admin.setting.setting',$data);   
+    {  
+        $data['setting'] = Setting::where('status',1)->first();
+       return view('admin.setting.edit',$data);   
     }
     
     public function update(Request $request, string $id)
