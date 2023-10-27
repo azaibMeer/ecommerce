@@ -49,7 +49,7 @@
                                                 </div>
                                              </div>
                                           </div>
-                                          <div class="product-buttons d-flex justify-content-center">
+                                          {{--<div class="product-buttons d-flex justify-content-center">
                                              <form action="{{url('/product/addtocart/'.$featured_product->id)}}" method="post" class="formAddToCart">
                                                 @csrf
                                                 <input type="hidden" name="quantity" value="1">
@@ -64,7 +64,7 @@
                                              <a href="{{url('/product/detail/'.$featured_product->slug)}}" class="quick-view hidden-sm-down" data-link-action="quickview">
                                              <i class="fa fa-eye" aria-hidden="true"></i>
                                              </a>
-                                          </div>
+                                          </div>--}}
                                        </div>
                                     </div>
                                  </div>

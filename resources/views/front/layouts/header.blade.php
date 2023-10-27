@@ -26,17 +26,11 @@
                     <div class="main-menu col-sm-4 col-md-5 align-items-center justify-content-center navbar-expand-md">
                         <div class="menu navbar collapse navbar-collapse">
                             <ul class="menu-top navbar-nav">
+                                @foreach($header_categories as $category)
                                 <li class="">
-                                    <a href="{{url('/')}}" class="parent">Home</a>   
+                                    <a href="{{url('/category/'.$category->slug)}}" class="parent">{{$category->name}}</a>   
                                 </li>
-                                 <li>
-                                    <a href="#" class="parent">Page</a>
-                                </li>
-                                <li class=" {{ request()->is('contact') ? 'active' : '' }}">
-                                    <a href="{{url('/contact')}}" class="parent">
-                                    Contact US
-                                    </a>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\Slider;
@@ -41,7 +42,8 @@ class OrderController extends Controller
      */
     public function show()
     {
-        $data['orders'] = Order::get();
+        $data['orders'] = Order::join('users','users.id','orders.user_id')
+        ->select('orders.*','users.name as user_name')->get();
         return view('admin.order.list',$data);
     }
 
@@ -72,6 +74,22 @@ class OrderController extends Controller
     public function user_order()
     {
         //dd("dd");
+        $user_id = Auth::User()->id;
+        $order = Order::join('order_detail','order_detail.order_id','orders.id')
+        ->select('orders.*','order_detail.*')
+        ->where('orders.id', $user_id)->get();
+        return view('front.layouts.orders');
+        //dd($order);
+        
+    }
+
+    public function order_view($id){
+        //dd($id);
+
+        $view_order = OrderDetail::where('order_id',$id)->get();
+        //dd($view_order);
+        return view('admin.order.view_order');
+
     }
 
 }

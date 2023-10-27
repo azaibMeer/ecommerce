@@ -21,6 +21,9 @@
                                             <a href="#">About Us</a>
                                         </li>
                                         <li>
+                                            <a href="{{url('/contact/')}}">Contact Us</a>
+                                        </li>
+                                        <li>
                                             <a href="#">Reasons to shop</a>
                                         </li>
                                         <li>

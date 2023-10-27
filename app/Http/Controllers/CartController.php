@@ -127,6 +127,7 @@ class CartController extends Controller
         $order->delivery_charges = $setting->shipping_charges;
         $order->discount = 0;
         $order->total_price = $sub_total + $order->delivery_charges;
+        $order->status = 1;
         $order->save();
         $order_id = $order->id;
 

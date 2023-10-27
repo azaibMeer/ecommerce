@@ -282,11 +282,13 @@
                                           </div>
                                           <ul class="product-tab nav nav-tabs d-flex">
                                              @foreach($product_images as $key => $image)
-                                             <li class="col">
-                                                <a href="#item" data-toggle="tab" >
+                                             @if($key <= 4)
+                                             <li class="col-lg-3">
+                                                <a href="#item-{{$key}}" data-toggle="tab" >
                                                 <img src="{{$image->sub_image}}" alt="img" title="{{$key}}" class="sub-images " >
                                                 </a>
                                              </li>
+                                             @endif
                                              @endforeach
                                           </ul>
                                           <div class="modal fade" id="product-modal" role="dialog">

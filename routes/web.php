@@ -94,6 +94,7 @@ Route::group(['middleware'=> 'admin'],function(){
      Route::post('/blog/store', [BlogController::class, 'store']);
 
      Route::get('/order/list/', [OrderController::class, 'show']);
+     Route::get('/view/order/{id}', [OrderController::class, 'order_view']);
 });
 
 Route::get('/admin/logout', function(Request $request){
