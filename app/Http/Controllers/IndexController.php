@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\Subscribe;
@@ -85,8 +86,19 @@ class IndexController extends Controller
         return response()->json(['message' => 'Thanks For Subscribe']);
     }
 
-     public function error()
+    public function error()
     {
         return view('front.error');
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->q;
+        if(isset($search)){
+            $search_result = Product::where('name','like', '%'.$search.'%')->get();
+                return view('front.layouts.search_result',compact('search_result','search'));
+        }else{
+            return redirect()->back();
+        }
     }
 }

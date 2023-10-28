@@ -27,7 +27,7 @@
                         <div class="menu navbar collapse navbar-collapse">
                             <ul class="menu-top navbar-nav">
                                 @foreach($header_categories as $category)
-                                <li class="">
+                                <li>
                                     <a href="{{url('/category/'.$category->slug)}}" class="parent">{{$category->name}}</a>   
                                 </li>
                                 @endforeach
@@ -37,8 +37,8 @@
 
                     <!-- search-->
                     <div id="search_widget" class="col-sm-6 col-md-5 align-items-center justify-content-end d-flex">
-                        <form method="get" action="#">
-                            <input type="text" name="s" value="" placeholder="Search ..." class="ui-autocomplete-input" autocomplete="off">
+                        <form method="get" action="{{url('/search')}}">
+                            <input type="text" name="q" value="" placeholder="Search ..." class="ui-autocomplete-input" autocomplete="off">
                             <button type="submit">
                                 <i class="fa fa-search"></i>
                             </button>

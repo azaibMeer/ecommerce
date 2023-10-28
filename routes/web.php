@@ -147,3 +147,5 @@ Route::get('/user/logout', function(Request $request){
 
 Route::get('/category/{slug}', [CategoryController::class, 'category_product']);
 Route::get('/blog/{slug}', [BlogController::class, 'detail']);
+Route::get('/search', [IndexController::class, 'search']);
+Route::post('/add_to_wishlist', [WishlistController::class, 'add_to_wishlist']);
