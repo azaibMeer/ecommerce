@@ -22,6 +22,9 @@ class IndexController extends Controller
         $data['sliders'] = Slider::where('status', 1)->take(3)->orderBy('id','desc')->get();
         $data['featured_products'] = Product::where('status',1)->get();
         $data['blogs'] = Blog::where('status',1)->orderBy('id','desc')->take(3)->get();
+        $data['featured_categories'] = Category::where('is_featured', 1)->orderBy('order','asc')
+        ->take(10)->get();
+        //dd($data['featured_categories']);
         return view('front.layouts.index',$data);
     }
 

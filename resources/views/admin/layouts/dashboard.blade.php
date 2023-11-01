@@ -60,7 +60,7 @@
                                     <div class="">
                                         <h3 class="display-4 d-block l-h-n m-0 fw-500">
                                              @if(isset($total_month_sales))
-                                            {{$setting->currency}} {{$total_month_sales[0]->total_order_price}}
+                                            {{$setting->currency}} {{number_format($total_month_sales[0]->total_order_price)}}
                                             @else
                                             0
                                             @endif

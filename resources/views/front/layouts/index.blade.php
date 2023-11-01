@@ -9,6 +9,7 @@
       <div id="content-wrapper" class="full-width">
          <div id="main">
             <section class="page-home">
+               @include('front.layouts.featured_categories')
                @include('front.layouts.featured_product')
                @include('front.layouts.blogs')
             </section>
