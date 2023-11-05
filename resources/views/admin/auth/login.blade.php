@@ -27,13 +27,23 @@
                      <h1 class="text-white fw-300 mb-3 d-sm-block">
                         Admin login
                      </h1>
-                     @include('error.error')
                      <div class="card p-4 rounded-plus bg-faded">
+                        @if(session()->has('message'))
+                            <p class="text-primary">
+                             {{ session()->get('message') }}
+                           </p>
+                         @elseif(session()->has('error'))
+                            <p class="text-danger">
+                                 {{ session()->get('error') }}
+                            </p>
+                         @endif
                         <form action="{{url('/authenticate')}}" method="post" id="login">
                            @csrf
                            <div class="form-group">
                               <label class="form-label" for="email">Email</label>
-                              <input type="email" id="email" name="email" class="form-control"placeholder="Email">
+                              <input type="email" id="email" 
+                              name="email" class="form-control" placeholder="Email" 
+                              autocomplete="off">
                               @error('email')
                               <p class="text-danger">{{ $message }}</p>
                               @enderror
@@ -68,7 +78,8 @@
                   use Carbon\Carbon;
                @endphp
                @if(isset($setting->developed_by))
-               <div class="position-absolute pos-bottom pos-left pos-right p-3 text-center text-white">
+               <div class="position-absolute pos-bottom pos-left pos-right 
+               p-3 text-center text-white">
                   © {{Carbon::now()->format('Y')}} 
                   <a href="{{url('http://www.technidersolutions.com/')}}" 
                      class='text-white' target='_blank'>{{$setting->developed_by}}</a>

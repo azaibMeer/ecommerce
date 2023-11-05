@@ -2,7 +2,7 @@
 <div class="section living-room background-none">
          <div class="container">
             <div class="tiva-row-wrap row">
-               <div class="col-md-12 col-xs-12 groupcategoriestab-vertical">
+               <div class="col-md-12 col-xs-12">
                   <div class="grouptab">
                      <div class="title-product">
                         <h2>Featured Products</h2>

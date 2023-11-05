@@ -37,12 +37,9 @@ class CategoryController extends Controller
         $user_id = Auth::User()->id;
         $request->validate([ 
 
-        /*'image' => 'required', */
-        'category_name' => 'required',
-        'sub_category' => 'required',
-        'status'=> 'required',
-        'show_home_page'=> 'required'
-        
+            'category_name' => 'required',
+            'sub_category' => 'required',
+            'status'=> 'required'
        ]);
         
         $category = new Category;
@@ -50,7 +47,13 @@ class CategoryController extends Controller
         $category->user_id = $user_id;
         $category->parent_id = $request->sub_category;
         $category->description = $request->description;
-        $category->show_home_page = $request->show_home_page;
+        $category->is_featured = $request->is_featured;
+        $category->show_on_header = $request->show_on_header;
+        if(isset($request->order)){
+            $category->order = $request->order;
+        }else{
+            $category->order = 100;
+        }
         $category->status = $request->status;
        
         $upload_path = "/front_assets/img/category/";
@@ -106,9 +109,7 @@ class CategoryController extends Controller
  
         'category_name' => 'required',
         'sub_category' => 'required',
-        'status'=> 'required',
-        'show_home_page'=> 'required'
-        
+        'status'=> 'required'
        ]);
         
         $category = Category::find($id);
@@ -116,7 +117,13 @@ class CategoryController extends Controller
         $category->user_id = $user_id;
         $category->parent_id = $request->sub_category;
         $category->description = $request->description;
-        $category->show_home_page = $request->show_home_page;
+        $category->is_featured = $request->is_featured;
+        if(isset($request->order)){
+            $category->order = $request->order;
+        }else{
+            $category->order = 100;
+        }
+        $category->order = $request->order;
         $category->status = $request->status;
        
         $upload_path = "/front_assets/img/category/";

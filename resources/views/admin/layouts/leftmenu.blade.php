@@ -2,12 +2,8 @@
                     <div class="page-logo">
                         <a href="#" class="page-logo-link press-scale-down d-flex align-items-center position-relative" data-toggle="modal" data-target="#modal-shortcut">
                             @if(isset($setting->logo_path))
-                            <img src="{{url($setting->logo_path)}}" alt="{{$setting->website_name}}" 
-                            style="width: 28px;height: 28px;object-fit: contain;">
-                            <span class="page-logo-text mr-1">{{$setting->website_name}}</span>
+                            <img src="{{url($setting->logo_path)}}" alt="{{$setting->website_name}}">
                             @endif
-                            <span class="position-absolute text-white opacity-50 small pos-top pos-right mr-2 mt-n2"></span>
-                            <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>
                         </a>
                     </div>
                     <!-- BEGIN PRIMARY NAVIGATION -->
@@ -30,7 +26,7 @@
                         <ul id="js-nav-menu" class="nav-menu">
                             <li class="{{ (request()->is('admin/dashboard')) ? 'active open' : '' }}">
                                 <a href="{{url('/admin/dashboard')}}" title="Dashboard">
-                                    <i class="fal fa-tachometer"></i>
+                                    <i class="fal fa-home"></i>
                                     <span class="nav-link-text">Dashboard</span>
                                 </a>
                             </li>
