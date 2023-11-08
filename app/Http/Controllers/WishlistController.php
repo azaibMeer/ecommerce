@@ -82,7 +82,8 @@ class WishlistController extends Controller
         if(isset($user_id)){
 
         $product_id = $request->product_id;
-        $check_in_wishlist = Wishlist::where('product_id',$product_id)->first();
+        $check_in_wishlist = Wishlist::where('product_id',$product_id)
+        ->where('user_id',$user_id)->first();
         if(isset($check_in_wishlist)){
              return response()->json(['success'=>'Already In Wishlist']);
         }else{

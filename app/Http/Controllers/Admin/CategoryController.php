@@ -118,6 +118,7 @@ class CategoryController extends Controller
         $category->parent_id = $request->sub_category;
         $category->description = $request->description;
         $category->is_featured = $request->is_featured;
+        $category->show_on_header = $request->show_on_header;
         if(isset($request->order)){
             $category->order = $request->order;
         }else{

@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {   
         $setting = Setting::where('status', 1)->first();
         $header_categories = Category::where('show_on_header', 1 )->where('status', 1)
-        ->orderBy('id', 'desc')->take(5)->get();
+        ->orderBy('id', 'desc')->take(4)->get();
         view()->share(['setting' => $setting, 'header_categories' => $header_categories]);
     }
 }
