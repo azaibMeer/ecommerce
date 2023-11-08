@@ -25140,3 +25140,8 @@ footer [class~=title-block],
     object-fit: cover;
     width: 100%;
 }
+
+.featured-category-height{
+	height: 198px !important;
+	object-fit: cover;
+}

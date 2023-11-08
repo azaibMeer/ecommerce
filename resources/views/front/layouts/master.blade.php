@@ -731,6 +731,7 @@
     <!-- Template JS -->
      <script src="/front_assets/js/theme.js"></script>
     @yield('script')
+    @include('scripts.news_letter_js')
 </body>
 
 

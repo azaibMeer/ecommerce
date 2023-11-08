@@ -57,7 +57,7 @@
          </div>
          <div class="form-group col-md-6">
                <label class="form-label">Set order</label>
-              <input type="text" class="form-control" placeholder="Order" name="order" value="{{$category->order}}">
+              <input type="text" class="form-control" placeholder="Order" name="order_number" value="{{$category->order_number}}">
          </div>
          <div class="form-group col-md-6">
                <label class="form-label">Show on header</label>

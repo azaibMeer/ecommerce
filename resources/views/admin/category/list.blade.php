@@ -37,6 +37,7 @@
                            <th>Image</th>
                            <th>Category</th>
                            <th>Parent Category</th>
+                           <th>Order</th>
                            <th>Status</th>
                            <th>Actions</th>
                         </tr>
@@ -59,6 +60,9 @@
                               @else
                               <span class="text-primary">This is main category</span>
                               @endif
+                           </td>
+                           <td>
+                              {{$category->order_number}}
                            </td>
                            <td>
                               @if($category->status == 1)

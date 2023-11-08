@@ -49,10 +49,10 @@ class CategoryController extends Controller
         $category->description = $request->description;
         $category->is_featured = $request->is_featured;
         $category->show_on_header = $request->show_on_header;
-        if(isset($request->order)){
-            $category->order = $request->order;
+        if(isset($request->order_number)){
+            $category->order_number = $request->order_number;
         }else{
-            $category->order = 100;
+            $category->order_number = 100;
         }
         $category->status = $request->status;
        
@@ -119,12 +119,12 @@ class CategoryController extends Controller
         $category->description = $request->description;
         $category->is_featured = $request->is_featured;
         $category->show_on_header = $request->show_on_header;
-        if(isset($request->order)){
-            $category->order = $request->order;
+        if(isset($request->order_number)){
+            $category->order_number = $request->order_number;
         }else{
-            $category->order = 100;
+            $category->order_number = 100;
         }
-        $category->order = $request->order;
+        //$category->order = $request->order;
         $category->status = $request->status;
        
         $upload_path = "/front_assets/img/category/";

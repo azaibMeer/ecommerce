@@ -10,13 +10,13 @@
             <div class="content-category">
                 <div class="content-img">
                     <a href="{{url('/category/'.$category->slug)}}">
-                        <img class="img-fluid" src="{{$category->image}}" alt="{{$category->name}}" 
-                        title="{{$category->name}}">
+                        <img class="img-fluid featured-category-height" src="{{$category->image}}" 
+                        alt="{{$category->name}}" title="{{$category->name}}">
                     </a>
                 </div>
                 <div class="info-category">
                     <h3>
-                        <a href="{{url('/category/'.$category->slug)}}">{{$category->name}} ({{$category->order}})</a>
+                        <a href="{{url('/category/'.$category->slug)}}">{{$category->name}}</a>
                     </h3>
                 </div>
             </div>
