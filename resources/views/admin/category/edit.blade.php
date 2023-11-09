@@ -82,7 +82,7 @@
                      <span class="text-danger">{{$message}}</span>
                   @enderror
                   @if(isset($category->image))
-                     <img src="{{$category->image}}" width="80px">
+                     <img src="{{$category->image}}" width="50px">
                   @endif
                </div>
          </div>
