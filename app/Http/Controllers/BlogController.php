@@ -94,5 +94,9 @@ class BlogController extends Controller
         return view('front.layouts.blog_detail',compact('blog'));
     }
 
+    public function review(Request $request){
+        dd($request->all());
+    }
+
 
 }

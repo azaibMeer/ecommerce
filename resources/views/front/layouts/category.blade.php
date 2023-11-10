@@ -7,7 +7,7 @@
                <ul class="menu level1">
                 @foreach($categories as $main_category)
                   <li class="item parent">
-                     <a href="#" class="hasicon" title="SIDE TABLE">
+                     <a href="#" class="hasicon set-text-wrap" title="SIDE TABLE">
                     {{$main_category->name}}
                     </a>
                       
@@ -18,7 +18,7 @@
                             @foreach($main_category->children as $child)
                               <li class="item parent-submenu parent">
                                  <a href="{{url('/category/'.$child->slug)}}" 
-                                    title="{{$child->name}}">{{$child->name}}</a>
+                                    title="{{$child->name}}" class="set-text-wrap">{{$child->name}}</a>
                                  <span class="show-sub fa-active-sub"></span>
                                  <div class="dropdown-submenu">
                                     <div class="menu-items">
@@ -27,7 +27,7 @@
                                             @foreach($child->children as $sub_child)
                                           <li class="item ">
                                              <a href="{{url('/category/'.$sub_child->slug)}}" 
-                                                title="{{$sub_child->name}}">
+                                                title="{{$sub_child->name}}" class="set-text-wrap">
                                                 {{$sub_child->name}}</a>
                                           </li>
                                             @endforeach

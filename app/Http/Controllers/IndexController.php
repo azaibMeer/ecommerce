@@ -24,8 +24,8 @@ class IndexController extends Controller
         $data['blogs'] = Blog::where('status',1)->orderBy('id','desc')->take(3)->get();
         $data['featured_categories'] = Category::whereBetween('order_number', [1, 10])
         ->where('is_featured', 1)->orderBy('order_number')->get();
-
-     
+        $data['new_arrivals'] = Product::where('status', '1')->where('created_at' ,'>', now())->get();
+        //dd($data['new_arrivals']);     
         //dd($data['featured_categories']);
         return view('front.layouts.index',$data);
     }

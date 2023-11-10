@@ -111,7 +111,8 @@ class ProductController extends Controller
     public function show()
     {   
         $data['products'] = product::join('categories','categories.id','products.category_id')
-        ->select('products.*','categories.name as category_name')->OrderBy('products.id','desc')->get();
+        ->select('products.*','categories.name as category_name')->OrderBy('products.id','desc')
+        ->get();
         return view('admin.product.list',$data);
     }
 
@@ -145,7 +146,8 @@ class ProductController extends Controller
     public function detail($slug)
     {   
 
-       $data['product'] = Product::where('slug',$slug)->first();
+       $data['product'] = Product::where('slug',$slug)->with('reviews')->first();
+       //dd($data['product']);
        $product_id = $data['product']['id']; 
        $data['product_images'] = ProductImage::where('product_id',$product_id)
        ->where('status', 1)->take(4)->get();

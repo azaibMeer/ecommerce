@@ -347,7 +347,7 @@
                                              </span>
                                           </div>
                                           <p class="description">{{$product->short_description}}</p>
-                                          <div class="option has-border d-lg-flex size-color">
+                                          {{--<div class="option has-border d-lg-flex size-color">
                                              <div class="size">
                                                 <span class="size">size :</span>
                                                 <select>
@@ -366,7 +366,7 @@
                                                 <span class="brown"></span>
                                                 <span class="red"></span>
                                              </div>
-                                          </div>
+                                          </div>--}}
                                           <div class="has-border cart-area">
                                              <div class="product-quantity">
                                                 <div class="qty">
@@ -440,7 +440,7 @@
                                              <div class="read after-has-border">
                                                 <a href="#review">
                                                 <i class="fa fa-commenting-o color" aria-hidden="true"></i>
-                                                <span>READ REVIEWS (3)</span>
+                                                <span>READ REVIEWS ({{count($product->reviews)}})</span>
                                                 </a>
                                              </div>
                                              <div class="apen after-has-border">
@@ -480,7 +480,8 @@
                                        <a data-toggle="tab" href="#tag">Product Tags</a>
                                     </li>
                                     <li>
-                                       <a data-toggle="tab" href="#review">Reviews (2)</a>
+                                       <a data-toggle="tab" href="#review">
+                                          Reviews ({{count($product->reviews)}})</a>
                                     </li>
                                  </ul>
                                  <div class="tab-content">
@@ -492,11 +493,13 @@
                                     <div id="review" class="tab-pane fade">
                                        <div class="spr-form">
                                           <div class="user-comment">
+                                             @if(count($product->reviews) > 0)
+                                             @foreach($product->reviews as $review)
                                              <div class="spr-review">
                                                 <div class="spr-review-header">
                                                    <span class="spr-review-header-byline">
-                                                   <strong>Peter Capidal</strong> -
-                                                   <span>Apr 14, 2018</span>
+                                                   <strong>{{ucwords($review->name)}}</strong> -
+                                                   <span>{{$review->created_at->format('F d, Y')}}</span>
                                                    </span>
                                                    <div class="rating">
                                                       <div class="star-content">
@@ -509,44 +512,24 @@
                                                    </div>
                                                 </div>
                                                 <div class="spr-review-content">
-                                                   <p class="spr-review-content-body">In feugiat venenatis enim, non finibus metus bibendum
-                                                      eu. Proin massa justo, eleifend fermentum varius
-                                                      quis, semper gravida quam. Cras nec enim sed
-                                                      lacus viverra luctus. Nunc quis accumsan mauris.
-                                                      Aliquam fermentum sit amet est id scelerisque.
-                                                      Nam porta risus metus.
+                                                   <p class="spr-review-content-body">
+                                                      {{ucfirst($review->comment)}}
                                                    </p>
                                                 </div>
                                              </div>
-                                             <div class="spr-review preview2">
+                                             @endforeach
+                                             @else
+                                             <div class="spr-review">
                                                 <div class="spr-review-header">
                                                    <span class="spr-review-header-byline">
-                                                   <strong>David James</strong> -
-                                                   <span>Apr 13, 2018</span>
-                                                   </span>
-                                                   <div class="rating">
-                                                      <div class="star-content">
-                                                         <div class="star"></div>
-                                                         <div class="star"></div>
-                                                         <div class="star"></div>
-                                                         <div class="star"></div>
-                                                         <div class="star"></div>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                                <div class="spr-review-content">
-                                                   <p class="spr-review-content-body">In feugiat venenatis enim, non finibus metus bibendum
-                                                      eu. Proin massa justo, eleifend fermentum varius
-                                                      quis, semper gravida quam. Cras nec enim sed
-                                                      lacus viverra luctus. Nunc quis accumsan mauris.
-                                                      Aliquam fermentum sit amet est id scelerisque.
-                                                      Nam porta risus metus.
-                                                   </p>
+                                                   <strong>The Product Have No Reviews</strong>
                                                 </div>
                                              </div>
+                                             @endif
                                           </div>
                                        </div>
-                                       <form method="post" action="#" class="new-review-form">
+                                       @if(Auth::User())
+                                       <form method="post" action="{{url('/store/review/')}}" class="new-review-form">
                                           <input type="hidden" name="review[rating]" value="3">
                                           <input type="hidden" name="product_id">
                                           <h3 class="spr-form-title">Write a review</h3>
@@ -574,16 +557,16 @@
                                           </fieldset>
                                           <fieldset class="spr-form-contact">
                                              <div class="spr-form-contact-name">
-                                                <input class="spr-form-input spr-form-input-text form-control" value="" placeholder="Enter your name">
+                                                <input class="spr-form-input spr-form-input-text form-control" value="{{Auth::User()->name}}" placeholder="Enter your name">
                                              </div>
                                              <div class="spr-form-contact-email">
-                                                <input class="spr-form-input spr-form-input-email form-control" value="" placeholder="Enter your email">
+                                                <input class="spr-form-input spr-form-input-email form-control" value="{{Auth::User()->email}}" placeholder="Enter your email">
                                              </div>
                                           </fieldset>
                                           <fieldset>
                                              <div class="spr-form-review-body">
                                                 <div class="spr-form-input">
-                                                   <textarea class="spr-form-input-textarea" rows="10" placeholder="Write your comments here"></textarea>
+                                                   <textarea class="spr-form-input-textarea" rows="10" placeholder="Write your comments here"  name="comment"></textarea>
                                                 </div>
                                              </div>
                                           </fieldset>
@@ -591,6 +574,7 @@
                                              <input type="submit" name="addComment" id="submitComment" class="btn btn-default" value="Submit Review">
                                           </div>
                                        </form>
+                                       @endif
                                     </div>
                                     <div id="tag" class="tab-pane fade in">
                                        <p>
