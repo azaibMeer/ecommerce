@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Setting;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\OrderDetail;
 
 
 class ProductController extends Controller
@@ -147,10 +148,24 @@ class ProductController extends Controller
     {   
 
        $data['product'] = Product::where('slug',$slug)->with('reviews')->first();
-       //dd($data['product']);
-       $product_id = $data['product']['id']; 
-       $data['product_images'] = ProductImage::where('product_id',$product_id)
-       ->where('status', 1)->take(4)->get();
-       return view('front.layouts.product_detail',$data);
+
+       $data['best_sellers'] = OrderDetail::select('product_id')
+        ->selectRaw('SUM(qty) as total_quantity_sold')->groupBy('product_id')
+        ->orderBy('total_quantity_sold' ,'desc')->limit(3)->with('products')->get();
+        
+        $data['categories'] = Category::where('parent_id','0')
+        ->where('status','1')->take(5)->with('children')->get();
+        // dd($data['categories']);
+       if(isset($data['product'])){
+
+           $product_id = $data['product']['id']; 
+           $data['product_images'] = ProductImage::where('product_id',$product_id)
+           ->where('status', 1)->take(4)->get();
+           return view('front.layouts.product_detail',$data); 
+       
+       }else{
+            return redirect()->back()->with("message","something went wrong");
+       }
+       
     }
 }

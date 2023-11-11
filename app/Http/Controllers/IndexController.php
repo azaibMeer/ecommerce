@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Setting;
 use App\Models\Subscribe;
 use App\Models\Slider;
@@ -17,17 +18,25 @@ class IndexController extends Controller
      */
     public function index()
     {   
+
         $data['categories'] = Category::with('children')->where('parent_id','0')
         ->where('status','1')->take(10)->get();
+
         $data['sliders'] = Slider::where('status', 1)->take(3)->orderBy('id','desc')->get();
+
         $data['featured_products'] = Product::where('status',1)->get();
+
         $data['blogs'] = Blog::where('status',1)->orderBy('id','desc')->take(3)->get();
+
         $data['featured_categories'] = Category::whereBetween('order_number', [1, 10])
         ->where('is_featured', 1)->orderBy('order_number')->get();
-        $data['new_arrivals'] = Product::where('status', '1')->where('created_at' ,'>', now())->get();
-        //dd($data['new_arrivals']);     
-        //dd($data['featured_categories']);
+
+        $data['new_arrivals'] = Product::where('status', '1')
+        ->where('created_at' ,'>',now())->where('created_at' ,)->get();
+
+        //dd($data['new_arrivals']);
         return view('front.layouts.index',$data);
+
     }
 
     /**
