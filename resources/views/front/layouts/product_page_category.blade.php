@@ -1,5 +1,3 @@
-
-
 @if(count($categories) > 0)
 <div class="sidebar-block">
 <div class="title-block">Categories</div>

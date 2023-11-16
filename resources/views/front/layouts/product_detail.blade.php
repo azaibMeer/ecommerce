@@ -18,8 +18,7 @@
                            <!-- product tag -->
                         </div>
                         <div class="col-sm-8 col-lg-9 col-md-9">
-                           @include('error.error')
-                           <div class="main-product-detail">
+                          <div class="main-product-detail">
                               <h2>{{ucwords($product->name)}}</h2>
                               <div class="product-single row">
                                  <div class="product-detail col-xs-12 col-md-5 col-sm-5">
@@ -150,7 +149,10 @@
                                                       <span>Add to cart</span>
                                                       </button>
                                                       @endif
-                                                      <a class="addToWishlist" href="{{url('/user/wishlist/'.$product->id)}}" >
+                                                      {{--<a class="addToWishlist" href="{{url('/user/wishlist/'.$product->id)}}" >
+                                                      <i class="fa fa-heart" aria-hidden="true"></i>
+                                                      </a>--}}
+                                                      <a class="addToWishlist" href="JavaScript:Void(0)" data-id="{{$product->id}}">
                                                       <i class="fa fa-heart" aria-hidden="true"></i>
                                                       </a>
                                                       </span>
@@ -161,7 +163,7 @@
                                              <p class="product-minimal-quantity">
                                              </p>
                                           </div>
-                                          <div class="d-flex2 has-border">
+                                          {{--<div class="d-flex2 has-border">
                                              <div class="btn-group">
                                                 <a href="#">
                                                 <i class="zmdi zmdi-share"></i>
@@ -176,8 +178,8 @@
                                                 <span>Print</span>
                                                 </a>
                                              </div>
-                                          </div>
-                                          <div class="rating-comment has-border d-flex">
+                                          </div>-}}
+                                          {{--<div class="rating-comment has-border d-flex">
                                              <div class="review-description d-flex">
                                                 <span>REVIEW :</span>
                                                 <div class="rating">
@@ -196,13 +198,13 @@
                                                 <span>READ REVIEWS ({{count($product->reviews)}})</span>
                                                 </a>
                                              </div>
-                                             {{--<div class="apen after-has-border">
+                                             <div class="apen after-has-border">
                                                 <a href="#review">
                                                 <i class="fa fa-pencil color" aria-hidden="true"></i>
                                                 <span>WRITE A REVIEW</span>
                                                 </a>
-                                             </div>--}}
-                                          </div>
+                                             </div>
+                                          </div>--}}
                                           <div class="content">
                                              <p>SKU :
                                                 <span class="content2">
@@ -283,6 +285,7 @@
                                        </div>
                                        @if(Auth::User())
                                        <form method="post" action="{{url('/store/review/')}}" class="new-review-form">
+                                          @csrf
                                           <input type="hidden" name="review[rating]" value="3">
                                           <input type="hidden" name="product_id">
                                           <h3 class="spr-form-title">Write a review</h3>
@@ -348,6 +351,7 @@
 </div>
 @endsection
 @section('script')
+@include('scripts.wishlist_js')
 <script>
    const mainImage = document.getElementById('mainImage');
    const thumbnails = document.querySelectorAll('.sub-images');

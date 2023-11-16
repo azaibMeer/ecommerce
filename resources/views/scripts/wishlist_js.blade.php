@@ -13,11 +13,11 @@ $(document).ready(function(){
             '_token': "{{csrf_token()}}",
          },
          success: function(response){
-            alert(response.success);
+            toastr.info(response.success);
          }
       });
    }else{
-      alert("Please login to add in wishlist");
+       alert("Please login to add in wishlist");
    }
   });
 });

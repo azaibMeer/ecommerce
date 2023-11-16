@@ -72,7 +72,7 @@ class AdminAuthController extends Controller
                     if($user->user_type == 1)
                         return redirect('/admin/dashboard');
                     elseif($user->user_type == 2 && $user->status == 1)
-                        return redirect('/');
+                        return redirect('/')->with('message','Login success');
                     else{
                         return redirect('/user/login')->with('error','Account Expired');
                     }

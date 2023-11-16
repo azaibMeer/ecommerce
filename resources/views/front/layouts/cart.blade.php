@@ -9,15 +9,6 @@
           <section id="main">
             <div class="cart-grid row">
               <div class="col-md-9 col-xs-12 check-info">
-                 @if(session()->has('message'))
-                        <div class="alert alert-success">
-                           {{ session()->get('message') }}
-                        </div>
-                        @elseif(session()->has('error'))
-                        <div class="alert alert-danger">
-                           {{ session()->get('error') }}
-                        </div>
-                @endif
                 <h1 class="title-page">Shopping Cart</h1>
                 <div class="cart-container">
                   <div class="cart-overview js-cart">
