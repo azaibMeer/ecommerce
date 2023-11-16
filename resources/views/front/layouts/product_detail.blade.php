@@ -152,7 +152,7 @@
                                                       {{--<a class="addToWishlist" href="{{url('/user/wishlist/'.$product->id)}}" >
                                                       <i class="fa fa-heart" aria-hidden="true"></i>
                                                       </a>--}}
-                                                      <a class="addToWishlist" href="JavaScript:Void(0)" data-id="{{$product->id}}">
+                                                      <a class="addToWishlist" href="JavaScript:void(0)" data-id="{{$product->id}}">
                                                       <i class="fa fa-heart" aria-hidden="true"></i>
                                                       </a>
                                                       </span>

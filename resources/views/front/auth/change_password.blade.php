@@ -8,15 +8,6 @@
                     <div id="content-wrapper" class="onecol">
                         <div id="main">
                             <div class="page-content">
-                                @if(session()->has('success'))
-                            <div class="alert alert-success">
-                                {{ session()->get('success') }}
-                            </div>
-                        @elseif(session()->has('danger'))
-                            <div class="alert alert-danger">
-                                {{ session()->get('danger') }}
-                            </div>
-                        @endif
                                 <form action="{{url('/store/password')}}"
                                  class="forgotten-password" method="post" id="customer-form">
                                  @csrf

@@ -14,12 +14,14 @@ $(document).ready(function(){
               },
               dataType: 'json',
               success : function(response){
-                $('#result_output').text(response.message);
+                // $('#result_output').text(response.message);
+                toastr["info"](response.message);
                 $("#form")[0].reset();
               }
              });
     else
-        $('#result_output').text("Please enter email");
+        // $('#result_output').text("Please enter email");
+      toastr["error"]("Please enter email");
   });
 });
 </script>

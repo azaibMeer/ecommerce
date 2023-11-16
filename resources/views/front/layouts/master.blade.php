@@ -34,6 +34,28 @@
     <!-- Template CSS -->
     <link rel="stylesheet" type="text/css" href="/front_assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="/front_assets/css/reponsive.css">
+    <link rel="stylesheet" media="screen, print" href="/backend_assets/css/notifications/toastr/toastr.css">
+
+    <!-- Custom toaster style for remove icons -->
+    <style>
+        .toast-success {
+          background-color: #4CAF50; /* Green */
+        }
+        .toast-error {
+          background-color: #ef3c3c; 
+        }
+        .toast-warning {
+          background-color: #FFC107; /* Yellow */
+        }
+
+        .toast-info {
+          background-color: #2196F3; /* Blue */
+        }
+        .toast::before {
+            content: none !important;
+        }
+    </style>
+
 </head>
 
 <body id="@yield('id', 'home')" class="@yield('class', '')">
@@ -730,8 +752,10 @@
 
     <!-- Template JS -->
      <script src="/front_assets/js/theme.js"></script>
+     <script src="{{url('/backend_assets/js/notifications/toastr/toastr.js')}}"></script>
     @yield('script')
     @include('scripts.news_letter_js')
+    @include('scripts.toastr')
 </body>
 
 

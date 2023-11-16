@@ -10,16 +10,6 @@
                         <div id="main">
                             <div id="content" class="page-content">
                                 <div class="register-form text-center">
-                                @if(session()->has('message'))
-                                    <div class="alert alert-success">
-                                        {{ session()->get('message') }}
-                                    </div>
-                                @elseif(session()->has('error'))
-                                    <div class="alert alert-danger">
-                                        {{ session()->get('error') }}
-                                    </div>
-                                @endif
-                                    
                                     <h1 class="text-center title-page">
                                         Create your {{$setting->website_name}} Account
                                     </h1>

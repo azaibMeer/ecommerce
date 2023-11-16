@@ -10,15 +10,6 @@
                             <div id="content" class="page-content">
                                 <div id="mywishlist">
                                     <h1 class="title-page">My Wishlists</h1>
-                                    @if(session()->has('message'))
-                                                <div class="alert alert-success">
-                                                   {{ session()->get('message') }}
-                                                </div>
-                                                @elseif(session()->has('error'))
-                                                <div class="alert alert-danger">
-                                                   {{ session()->get('error') }}
-                                                </div>
-                                                @endif
                                     <div id="block-history" class="block-center">
                                         <table class="std table">
                                             <thead>

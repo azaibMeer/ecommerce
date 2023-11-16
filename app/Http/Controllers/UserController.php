@@ -169,15 +169,15 @@ class UserController extends Controller
                 $change_password->password = hash::make($confirm_password);
                 $change_password->save();
                 
-                 return redirect()->back()->with('success', 'password Has been Changed Next time Login with new password');
+                 return redirect()->back()->with('message', 'password Has been Changed Next time Login with new password');
 
             }else{
-                 return redirect()->back()->with('danger', 'new password and confirm password not matched');
+                 return redirect()->back()->with('error', 'new password and confirm password not matched');
             }
 
 
         }else{
-            return redirect()->back()->with('danger', 'Old Password Not Matched');
+            return redirect()->back()->with('error', 'Old Password Not Matched');
         }
 
     }

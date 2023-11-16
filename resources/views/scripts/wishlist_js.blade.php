@@ -13,12 +13,15 @@ $(document).ready(function(){
             '_token': "{{csrf_token()}}",
          },
          success: function(response){
-            toastr.info(response.success);
+            toastr['success'](response.success);
          }
       });
    }else{
-       alert("Please login to add in wishlist");
+
+      toastr["error"]("Please login to add in wishlist");
+       //alert("Please login to add in wishlist");
    }
+
   });
 });
 </script>
