@@ -16,7 +16,8 @@
                                     </div>
                                     <div class="form-group no-gutters">
                                         <div class="input-group js-parent-focus">
-                                            <input class="form-control js-child-focus js-visible-password" name="password" type="password" value="" placeholder="Password">
+                                            <input class="form-control js-child-focus js-visible-password" name="password"
+                                             type="password" value="" placeholder="Password">
                                         </div>
                                     </div>
                                     <div class="no-gutters text-center">
